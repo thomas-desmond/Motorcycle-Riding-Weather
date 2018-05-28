@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using MotorcycleRidingWeather.Constants;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Xamarin.Forms;
 
 namespace MotorcycleRidingWeather.Models
 {
+
     public partial class FiveDayWeatherItem
     {
         [JsonProperty("cod")]
@@ -73,6 +76,22 @@ namespace MotorcycleRidingWeather.Models
 
         [JsonProperty("dt_txt")]
         public string DateTimeAsString { get; set; }
+
+        public Color TempColor 
+        {
+            get
+            {
+                if(Main.Temp > Settings.MAX_TEMP || Main.Temp <Settings.MIN_TEMP)
+                {
+                    return Color.FromHex("66FF7F7F");
+                }
+                else
+                {
+                    return Color.FromHex("6690EE90");
+                }
+            }
+            
+        }
     }
 
     public partial class Clouds
@@ -132,7 +151,7 @@ namespace MotorcycleRidingWeather.Models
         public Description Description { get; set; }
 
         [JsonProperty("icon")]
-        public Icon Icon { get; set; }
+        public string Icon { get; set; }
     }
 
     public partial class Wind
@@ -146,9 +165,7 @@ namespace MotorcycleRidingWeather.Models
 
     public enum Pod { D, N };
 
-    public enum Description { BrokenClouds, ClearSky, LightRain };
-
-    public enum Icon { The01D, The01N, The02N, The04N, The10D, The10N };
+    public enum Description { BrokenClouds, ClearSky, FewClouds, LightRain, ScatteredClouds };
 
     public enum MainEnum { Clear, Clouds, Rain };
 
@@ -171,7 +188,6 @@ namespace MotorcycleRidingWeather.Models
             Converters = {
                 new PodConverter(),
                 new DescriptionConverter(),
-                new IconConverter(),
                 new MainEnumConverter(),
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
             },
@@ -224,8 +240,12 @@ namespace MotorcycleRidingWeather.Models
                     return Description.BrokenClouds;
                 case "clear sky":
                     return Description.ClearSky;
+                case "few clouds":
+                    return Description.FewClouds;
                 case "light rain":
                     return Description.LightRain;
+                case "scattered clouds":
+                    return Description.ScatteredClouds;
             }
             throw new Exception("Cannot unmarshal type Description");
         }
@@ -239,58 +259,14 @@ namespace MotorcycleRidingWeather.Models
                     serializer.Serialize(writer, "broken clouds"); return;
                 case Description.ClearSky:
                     serializer.Serialize(writer, "clear sky"); return;
+                case Description.FewClouds:
+                    serializer.Serialize(writer, "few clouds"); return;
                 case Description.LightRain:
                     serializer.Serialize(writer, "light rain"); return;
+                case Description.ScatteredClouds:
+                    serializer.Serialize(writer, "scattered clouds"); return;
             }
             throw new Exception("Cannot marshal type Description");
-        }
-    }
-
-    internal class IconConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(Icon) || t == typeof(Icon?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
-            switch (value)
-            {
-                case "01d":
-                    return Icon.The01D;
-                case "01n":
-                    return Icon.The01N;
-                case "02n":
-                    return Icon.The02N;
-                case "04n":
-                    return Icon.The04N;
-                case "10d":
-                    return Icon.The10D;
-                case "10n":
-                    return Icon.The10N;
-            }
-            throw new Exception("Cannot unmarshal type Icon");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            var value = (Icon)untypedValue;
-            switch (value)
-            {
-                case Icon.The01D:
-                    serializer.Serialize(writer, "01d"); return;
-                case Icon.The01N:
-                    serializer.Serialize(writer, "01n"); return;
-                case Icon.The02N:
-                    serializer.Serialize(writer, "02n"); return;
-                case Icon.The04N:
-                    serializer.Serialize(writer, "04n"); return;
-                case Icon.The10D:
-                    serializer.Serialize(writer, "10d"); return;
-                case Icon.The10N:
-                    serializer.Serialize(writer, "10n"); return;
-            }
-            throw new Exception("Cannot marshal type Icon");
         }
     }
 
