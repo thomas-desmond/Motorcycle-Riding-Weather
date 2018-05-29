@@ -6,8 +6,8 @@
     Title="{Binding Title}">
     <ContentPage.ToolbarItems>
         <ToolbarItem
-            Text="Settings" 
-            Command="{Binding NavigateToSettingsPage}"/>
+            Text="Settings"
+            Command="{Binding NavigateToSettingsPage}" />
     </ContentPage.ToolbarItems>
     <StackLayout>
         <ListView
@@ -18,6 +18,12 @@
                         <StackLayout
                             BackgroundColor="{Binding TempColor}"
                             Orientation="Horizontal">
+                            <Image
+                                Source="bike.png"
+                                IsVisible="{Binding IsGoodRidingDay}" />
+                            <Image
+                                Source="car.png"
+                                IsVisible="{Binding IsBadRidingDay}" />
                             <Label
                                 x:Name="Temperature"
                                 Text="{Binding Main.Temp}" />

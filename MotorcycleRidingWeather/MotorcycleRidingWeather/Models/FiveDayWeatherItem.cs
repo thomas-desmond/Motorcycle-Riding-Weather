@@ -77,11 +77,33 @@ namespace MotorcycleRidingWeather.Models
         [JsonProperty("dt_txt")]
         public string DateTimeAsString { get; set; }
 
-        public Color TempColor 
+        public bool IsGoodRidingDay
         {
             get
             {
-                if(Main.Temp > Settings.MAX_TEMP || Main.Temp <Settings.MIN_TEMP)
+                if (Main.Temp > Settings.MAX_TEMP || Main.Temp < Settings.MIN_TEMP)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        public bool IsBadRidingDay
+        {
+            get
+            {
+                return !IsGoodRidingDay;
+            }
+        }
+
+
+
+        public Color TempColor
+        {
+            get
+            {
+                if (IsGoodRidingDay == false)
                 {
                     return Color.FromHex("66FF7F7F");
                 }
@@ -90,7 +112,7 @@ namespace MotorcycleRidingWeather.Models
                     return Color.FromHex("6690EE90");
                 }
             }
-            
+
         }
     }
 
@@ -165,7 +187,7 @@ namespace MotorcycleRidingWeather.Models
 
     public enum Pod { D, N };
 
-    public enum Description { BrokenClouds, ClearSky, FewClouds, LightRain, ScatteredClouds };
+    public enum Description { BrokenClouds, ClearSky, FewClouds, LightRain, OvercastClouds, ScatteredClouds };
 
     public enum MainEnum { Clear, Clouds, Rain };
 
@@ -242,6 +264,8 @@ namespace MotorcycleRidingWeather.Models
                     return Description.ClearSky;
                 case "few clouds":
                     return Description.FewClouds;
+                case "overcast clouds":
+                    return Description.OvercastClouds;
                 case "light rain":
                     return Description.LightRain;
                 case "scattered clouds":
@@ -263,6 +287,8 @@ namespace MotorcycleRidingWeather.Models
                     serializer.Serialize(writer, "few clouds"); return;
                 case Description.LightRain:
                     serializer.Serialize(writer, "light rain"); return;
+                case Description.OvercastClouds:
+                    serializer.Serialize(writer, "overcast clouds"); return;
                 case Description.ScatteredClouds:
                     serializer.Serialize(writer, "scattered clouds"); return;
             }

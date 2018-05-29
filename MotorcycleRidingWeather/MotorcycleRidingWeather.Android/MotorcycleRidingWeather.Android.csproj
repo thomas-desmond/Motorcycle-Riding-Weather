@@ -78,6 +78,11 @@
     <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\bike.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\bike.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\bike.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\bike.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\bike.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
