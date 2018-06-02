@@ -8,6 +8,15 @@
             Intent="Settings">
             <TableRoot>
                 <TableSection
+                    Title="Location">
+                    <EntryCell
+                        HorizontalTextAlignment="Center"
+                        Keyboard="Default"
+                        Label="Location"
+                        Placeholder="Please enter zip code or city"
+                        Text="{Binding LocationText}" />
+                </TableSection>
+                <TableSection
                     Title="Temperatures">
                     <SwitchCell
                         Text="{Binding TemperatureScaleType}"

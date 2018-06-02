@@ -11,12 +11,12 @@
     </ContentPage.ToolbarItems>
     <StackLayout>
         <ListView
-            ItemsSource="{Binding WeatherCollection}">
+            ItemsSource="{Binding WeatherDisplayInformation}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout
-                            BackgroundColor="{Binding TempColor}"
+                            BackgroundColor="{Binding BackgroundColorBasedOnWeather}"
                             Orientation="Horizontal">
                             <Image
                                 Source="bike.png"
@@ -25,11 +25,13 @@
                                 Source="car.png"
                                 IsVisible="{Binding IsBadRidingDay}" />
                             <Label
-                                x:Name="Temperature"
-                                Text="{Binding Main.Temp}" />
+                                x:Name="MinTemperature"
+                                VerticalOptions="Center"
+                                Text="{Binding Path=LowTemperature, StringFormat='Low:{0}'}" />
                             <Label
-                                x:Name="DateTimeAsString"
-                                Text="{Binding DateTimeAsString}" />
+                                x:Name="MaxTemperature"
+                                VerticalOptions="Center"
+                                Text="{Binding Path=HighTemperature, StringFormat='High:{0}'}" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

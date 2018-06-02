@@ -28,6 +28,13 @@ namespace MotorcycleRidingWeather.ViewModels
             set { SetProperty(ref _minRidingTempLabel, value); }
         }
 
+        private string _locationText;
+        public string LocationText
+        {
+            get { return _locationText; }
+            set { SetProperty(ref _locationText, value); }
+        }
+
         private bool _isFahrenheit;
         public bool IsFahrenheit
         {

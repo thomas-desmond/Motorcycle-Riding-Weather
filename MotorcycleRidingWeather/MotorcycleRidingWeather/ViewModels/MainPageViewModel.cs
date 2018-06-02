@@ -6,6 +6,8 @@ using MotorcycleRidingWeather.Models;
 using System.Collections.ObjectModel;
 using Prism.Commands;
 using MotorcycleRidingWeather.Constants;
+using DarkSkyApi;
+using DarkSkyApi.Models;
 
 namespace MotorcycleRidingWeather.ViewModels
 {
@@ -15,11 +17,11 @@ namespace MotorcycleRidingWeather.ViewModels
 
         INavigationService _navigationService;
 
-        private ObservableCollection<DataList> _weatherCollection;
-        public ObservableCollection<DataList> WeatherCollection
+        private ObservableCollection<DailyWeatherItem> _weatherDisplayInformation;
+        public ObservableCollection<DailyWeatherItem> WeatherDisplayInformation
         {
-            get { return _weatherCollection; }
-            set { SetProperty(ref _weatherCollection, value); }
+            get { return _weatherDisplayInformation; }
+            set { SetProperty(ref _weatherDisplayInformation, value); }
         }
 
         public MainPageViewModel(INavigationService navigationService)
@@ -38,25 +40,34 @@ namespace MotorcycleRidingWeather.ViewModels
 
         public override async void OnNavigatingTo(NavigationParameters parameters)
 		{
-            var fiveDayAllData = await GetWeatherByZipCode();
-            WeatherCollection = new ObservableCollection<DataList>(fiveDayAllData.DataList);
+            var allForecastData = await GetWeatherByLongLat();
+            var allDailyDataToDisplay = GrabDailyDataNeeded(allForecastData);
+            WeatherDisplayInformation = allDailyDataToDisplay;
         }
 
-		internal async Task<FiveDayWeatherItem> GetWeatherByZipCode()
+        private ObservableCollection<DailyWeatherItem> GrabDailyDataNeeded(Forecast allForecastData)
         {
-            var client = new HttpClient();
-            var httpRequest = new HttpRequestMessage();
-            httpRequest.Method = HttpMethod.Get;
-            httpRequest.RequestUri =
-                new Uri("http://api.openweathermap.org/data/2.5/forecast?zip=92027,us&units=imperial&appid=4bd567dca0d90153a821781e2b6a9574");
-            HttpResponseMessage response = await client.SendAsync(httpRequest);
-            FiveDayWeatherItem fiveDayWeatherItemCollection = null;
-            if (response.IsSuccessStatusCode)
+            var dailyInfoToDisplay = new ObservableCollection<DailyWeatherItem>();
+            foreach (var day in allForecastData.Daily.Days)
             {
-                var jsonContent = await response.Content.ReadAsStringAsync();
-                fiveDayWeatherItemCollection = FiveDayWeatherItem.FromJson(jsonContent);
+                var dayInfo = new DailyWeatherItem()
+                {
+                    HighTemperature = day.HighTemperature,
+                    LowTemperature = day.LowTemperature,
+                    Time = day.Time,
+                };
+
+                dailyInfoToDisplay.Add(dayInfo);
             }
-            return fiveDayWeatherItemCollection;
+            return dailyInfoToDisplay;
+        }
+
+        internal async Task<Forecast> GetWeatherByLongLat()
+        {
+            var client = new DarkSkyService(Keys.DarkSkyKey);
+            Forecast result = await client.GetWeatherDataAsync(33.1345692, -117.2403483);
+            return result;
+
         }
     }
 }
