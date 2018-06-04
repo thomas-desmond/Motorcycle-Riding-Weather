@@ -11,17 +11,19 @@
     </ContentPage.ToolbarItems>
     <StackLayout>
         <ListView
-            ItemsSource="{Binding WeatherDisplayInformation}">
+            ItemsSource="{Binding WeatherDisplayInformation}"
+            HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Grid
+                            Padding="0,5"
                             BackgroundColor="{Binding BackgroundColorBasedOnWeather}">
                             <Grid.RowDefinitions>
                                 <RowDefinition
-                                    Height="2*" />
+                                    Height="Auto" />
                                 <RowDefinition
-                                    Height="*" />
+                                    Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition
@@ -32,7 +34,8 @@
                             <StackLayout
                                 Grid.Column="0"
                                 Grid.Row="0"
-                                Grid.RowSpan="2">
+                                Grid.RowSpan="2"
+                                VerticalOptions="Center">
                                 <Image
                                     Source="bike.png"
                                     IsVisible="{Binding IsGoodRidingDay}" />
@@ -41,13 +44,13 @@
                                     IsVisible="{Binding IsBadRidingDay}" />
                             </StackLayout>
                             <StackLayout
-                                Orientation="Horizontal"
                                 Grid.Row="0"
-                                Grid.Column="1">
+                                Grid.Column="1"
+                                Orientation="Horizontal">
                                 <Label
                                     x:Name="DateLabel"
                                     Text="{Binding StructuredTime}"
-                                    FontSize="Large" />
+                                    FontSize="30" />
                             </StackLayout>
                             <StackLayout
                                 Grid.Row="1"
@@ -56,15 +59,18 @@
                                 <Label
                                     x:Name="MinTemperature"
                                     VerticalOptions="Center"
-                                    Text="{Binding Path=LowTemperature, StringFormat='Low:{0}'}" />
+                                    Text="{Binding Path=LowTemperature, StringFormat='Low:{0}'}"
+                                    FontSize="Large" />
                                 <Label
                                     x:Name="MaxTemperature"
                                     VerticalOptions="Center"
-                                    Text="{Binding Path=HighTemperature, StringFormat='High:{0}'}" />
+                                    Text="{Binding Path=HighTemperature, StringFormat='High:{0}'}"
+                                    FontSize="Large" />
                                 <Label
                                     x:Name="PrecipitationPercentage"
                                     VerticalOptions="Center"
-                                    Text="{Binding Path=PrecipitationProbability, StringFormat='Precip:{0}%'}" />
+                                    Text="{Binding Path=PrecipitationProbability, StringFormat='Precip:{0}%'}"
+                                    FontSize="Large" />
                             </StackLayout>
                         </Grid>
                     </ViewCell>
