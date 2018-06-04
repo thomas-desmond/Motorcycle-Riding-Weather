@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Runtime.Serialization;
 using DarkSkyApi;
 using Xamarin.Forms;
@@ -140,6 +141,15 @@ namespace MotorcycleRidingWeather.Models
             set
             {
                 time = value.ToUnixTime();
+            }
+        }
+
+        public string StructuredTime
+        {
+            get
+            {
+                var monthAsString = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Time.Month);
+                return $"{Time.DayOfWeek} {monthAsString.Substring(0,3)} {Time.Day}";
             }
         }
 

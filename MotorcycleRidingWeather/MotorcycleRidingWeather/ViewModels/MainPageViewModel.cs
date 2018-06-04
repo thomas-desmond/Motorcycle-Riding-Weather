@@ -54,7 +54,10 @@ namespace MotorcycleRidingWeather.ViewModels
                 {
                     HighTemperature = day.HighTemperature,
                     LowTemperature = day.LowTemperature,
+                    WindSpeed = day.WindSpeed,
+                    PrecipitationProbability = day.PrecipitationProbability,
                     Time = day.Time,
+
                 };
 
                 dailyInfoToDisplay.Add(dayInfo);

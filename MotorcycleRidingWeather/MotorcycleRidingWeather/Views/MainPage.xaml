@@ -15,24 +15,58 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout
-                            BackgroundColor="{Binding BackgroundColorBasedOnWeather}"
-                            Orientation="Horizontal">
-                            <Image
-                                Source="bike.png"
-                                IsVisible="{Binding IsGoodRidingDay}" />
-                            <Image
-                                Source="car.png"
-                                IsVisible="{Binding IsBadRidingDay}" />
-                            <Label
-                                x:Name="MinTemperature"
-                                VerticalOptions="Center"
-                                Text="{Binding Path=LowTemperature, StringFormat='Low:{0}'}" />
-                            <Label
-                                x:Name="MaxTemperature"
-                                VerticalOptions="Center"
-                                Text="{Binding Path=HighTemperature, StringFormat='High:{0}'}" />
-                        </StackLayout>
+                        <Grid
+                            BackgroundColor="{Binding BackgroundColorBasedOnWeather}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="2*" />
+                                <RowDefinition
+                                    Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="Auto" />
+                                <ColumnDefinition
+                                    Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackLayout
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Grid.RowSpan="2">
+                                <Image
+                                    Source="bike.png"
+                                    IsVisible="{Binding IsGoodRidingDay}" />
+                                <Image
+                                    Source="car.png"
+                                    IsVisible="{Binding IsBadRidingDay}" />
+                            </StackLayout>
+                            <StackLayout
+                                Orientation="Horizontal"
+                                Grid.Row="0"
+                                Grid.Column="1">
+                                <Label
+                                    x:Name="DateLabel"
+                                    Text="{Binding StructuredTime}"
+                                    FontSize="Large" />
+                            </StackLayout>
+                            <StackLayout
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Orientation="Horizontal">
+                                <Label
+                                    x:Name="MinTemperature"
+                                    VerticalOptions="Center"
+                                    Text="{Binding Path=LowTemperature, StringFormat='Low:{0}'}" />
+                                <Label
+                                    x:Name="MaxTemperature"
+                                    VerticalOptions="Center"
+                                    Text="{Binding Path=HighTemperature, StringFormat='High:{0}'}" />
+                                <Label
+                                    x:Name="PrecipitationPercentage"
+                                    VerticalOptions="Center"
+                                    Text="{Binding Path=PrecipitationProbability, StringFormat='Precip:{0}%'}" />
+                            </StackLayout>
+                        </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
