@@ -25,7 +25,8 @@
                         HorizontalTextAlignment="Center"
                         Keyboard="Numeric"
                         Label="{Binding MaxRidingTempLabel}"
-                        Text="{Binding MaxRidingTemp}" />
+                        Text="{Binding MaxRidingTemp}"
+                    />
                     <EntryCell
                         HorizontalTextAlignment="Center"
                         Keyboard="Numeric"

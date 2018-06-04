@@ -142,6 +142,9 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
     <PackageReference Include="Prism.Unity.Forms" Version="7.0.0.396" />
+    <PackageReference Include="Xam.Plugins.Settings">
+      <Version>3.1.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MotorcycleRidingWeather\MotorcycleRidingWeather.csproj">

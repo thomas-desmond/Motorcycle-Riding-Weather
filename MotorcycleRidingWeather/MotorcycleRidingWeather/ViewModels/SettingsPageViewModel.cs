@@ -1,10 +1,13 @@
 ﻿using System;
+using Plugin.Settings;
+using Plugin.Settings.Abstractions;
 using Prism.Navigation;
 
 namespace MotorcycleRidingWeather.ViewModels
 {
     public class SettingsPageViewModel : ViewModelBase
     {
+        private static ISettings AppSettings => CrossSettings.Current;
         INavigationService _navigationService;
 
         private string _temperatureScaleType;
@@ -14,14 +17,14 @@ namespace MotorcycleRidingWeather.ViewModels
             set { SetProperty(ref _temperatureScaleType, value); }
         }
 
-        private string _maxRidingTempLabel;
-        public string MaxRidingTempLabel
+        private string _maxRidingTempLabel = "Max riding temp (F)";
+        public string MaxRidingTempLabel 
         {
             get { return _maxRidingTempLabel; }
             set { SetProperty(ref _maxRidingTempLabel, value); }
         }
 
-        private string _minRidingTempLabel;
+        private string _minRidingTempLabel = "Min riding tmep (F)";
         public string MinRidingTempLabel
         {
             get { return _minRidingTempLabel; }
@@ -79,18 +82,29 @@ namespace MotorcycleRidingWeather.ViewModels
             Title = "Settings";
 
             _navigationService = navigationService;
-
-            InitializeSettings();
-
         }
 
-        private void InitializeSettings()
+        public override void OnNavigatingTo(NavigationParameters parameters)
         {
-            MinRidingTemp = 45;
-            MaxRidingTemp = 95;
-            IsFahrenheit = true;
+            InitalizePageWithUserSettings();
         }
 
+        private void InitalizePageWithUserSettings()
+        {
+            MaxRidingTemp = AppSettings.GetValueOrDefault(nameof(MaxRidingTemp), 90);
+            MinRidingTemp = AppSettings.GetValueOrDefault(nameof(MinRidingTemp), 40);
+        }
+
+        public override void OnNavigatedFrom(NavigationParameters parameters)
+        {
+            SaveUserSettings();
+        }
+
+        private void SaveUserSettings()
+        {
+            AppSettings.AddOrUpdateValue(nameof(MaxRidingTemp), MaxRidingTemp);
+            AppSettings.AddOrUpdateValue(nameof(MinRidingTemp), MinRidingTemp);
+        }
 
         private void ConvertTempsToFahrenheit()
         {
