@@ -59,18 +59,18 @@
                                 <Label
                                     x:Name="MinTemperature"
                                     VerticalOptions="Center"
-                                    Text="{Binding Path=LowTemperature, StringFormat='Low:{0}'}"
-                                    FontSize="Large" />
+                                    Text="{Binding Path=LowTemperature, StringFormat='Low:{0:0}'}"
+                                    FontSize="Medium" />
                                 <Label
                                     x:Name="MaxTemperature"
                                     VerticalOptions="Center"
-                                    Text="{Binding Path=HighTemperature, StringFormat='High:{0}'}"
-                                    FontSize="Large" />
+                                    Text="{Binding Path=HighTemperature, StringFormat='High:{0:0}'}"
+                                    FontSize="Medium" />
                                 <Label
                                     x:Name="PrecipitationPercentage"
                                     VerticalOptions="Center"
                                     Text="{Binding Path=PrecipitationProbability, StringFormat='Precip:{0}%'}"
-                                    FontSize="Large" />
+                                    FontSize="Medium" />
                             </StackLayout>
                         </Grid>
                     </ViewCell>
