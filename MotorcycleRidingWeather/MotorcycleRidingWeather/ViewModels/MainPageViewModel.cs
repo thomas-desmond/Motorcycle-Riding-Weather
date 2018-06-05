@@ -8,11 +8,16 @@ using Prism.Commands;
 using MotorcycleRidingWeather.Constants;
 using DarkSkyApi;
 using DarkSkyApi.Models;
+using Xamarin.Forms;
+using Plugin.Settings.Abstractions;
+using Plugin.Settings;
 
 namespace MotorcycleRidingWeather.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
+        private static ISettings AppSettings => CrossSettings.Current;
+
         public DelegateCommand NavigateToSettingsPage { get; set; }
 
         INavigationService _navigationService;
@@ -40,9 +45,17 @@ namespace MotorcycleRidingWeather.ViewModels
 
         public override async void OnNavigatingTo(NavigationParameters parameters)
 		{
-            var allForecastData = await GetWeatherByLongLat();
-            var allDailyDataToDisplay = GrabDailyDataNeeded(allForecastData);
-            WeatherDisplayInformation = allDailyDataToDisplay;
+            if (WeatherDisplayInformation == null
+                || WeatherDisplayInformation.Count <= 0)
+            {
+                var allForecastData = await GetWeatherByLongLat();
+                var allDailyDataToDisplay = GrabDailyDataNeeded(allForecastData);
+                WeatherDisplayInformation = allDailyDataToDisplay;
+            }
+            else
+            {
+                WeatherDisplayInformation = new ObservableCollection<DailyWeatherItem>(WeatherDisplayInformation);
+            }
         }
 
         private ObservableCollection<DailyWeatherItem> GrabDailyDataNeeded(Forecast allForecastData)

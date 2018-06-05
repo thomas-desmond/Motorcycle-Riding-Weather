@@ -2,38 +2,64 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
     x:Class="MotorcycleRidingWeather.Views.SettingsPage">
     <ContentPage.Content>
-        <TableView
-            Intent="Settings">
-            <TableRoot>
-                <TableSection
-                    Title="Location">
-                    <EntryCell
-                        HorizontalTextAlignment="Center"
-                        Keyboard="Default"
-                        Label="Location"
-                        Placeholder="Please enter zip code or city"
-                        Text="{Binding LocationText}" />
-                </TableSection>
-                <TableSection
-                    Title="Temperatures">
-                    <SwitchCell
-                        Text="{Binding TemperatureScaleType}"
-                        On="{Binding IsFahrenheit}" />
-                    <EntryCell
-                        HorizontalTextAlignment="Center"
-                        Keyboard="Numeric"
-                        Label="{Binding MaxRidingTempLabel}"
-                        Text="{Binding MaxRidingTemp}"
-                    />
-                    <EntryCell
-                        HorizontalTextAlignment="Center"
-                        Keyboard="Numeric"
-                        Label="{Binding MinRidingTempLabel}"
-                        Text="{Binding MinRidingTemp}" />
-                </TableSection>
-            </TableRoot>
-        </TableView>
+        <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="2*" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    Text="{Binding Title}" />
+                <Button
+                    Grid.Column="2"
+                    Text="Back"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    Command="{Binding NavigateBack}" />
+            </Grid>
+            <TableView
+                Intent="Settings">
+                <TableRoot>
+                    <TableSection
+                        Title="Location">
+                        <EntryCell
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Default"
+                            Label="Location"
+                            Placeholder="Please enter zip code or city"
+                            Text="{Binding LocationText}" />
+                    </TableSection>
+                    <TableSection
+                        Title="Temperatures">
+                        <SwitchCell
+                            Text="{Binding TemperatureScaleType}"
+                            On="{Binding IsFahrenheit}" />
+                        <EntryCell
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Numeric"
+                            Label="{Binding MaxRidingTempLabel}"
+                            Text="{Binding MaxRidingTemp}" />
+                        <EntryCell
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Numeric"
+                            Label="{Binding MinRidingTempLabel}"
+                            Text="{Binding MinRidingTemp}" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

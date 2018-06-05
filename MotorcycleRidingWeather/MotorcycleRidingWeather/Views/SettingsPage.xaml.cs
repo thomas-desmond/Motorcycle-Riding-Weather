@@ -10,6 +10,7 @@ namespace MotorcycleRidingWeather.Views
         public SettingsPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

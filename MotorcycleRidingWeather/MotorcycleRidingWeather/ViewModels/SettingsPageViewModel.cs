@@ -1,6 +1,8 @@
 ﻿using System;
+using MotorcycleRidingWeather.Constants;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
+using Prism.Commands;
 using Prism.Navigation;
 
 namespace MotorcycleRidingWeather.ViewModels
@@ -10,6 +12,8 @@ namespace MotorcycleRidingWeather.ViewModels
         private static ISettings AppSettings => CrossSettings.Current;
         INavigationService _navigationService;
 
+        public DelegateCommand NavigateBack { get; set; }
+
         private string _temperatureScaleType;
         public string TemperatureScaleType
         {
@@ -18,7 +22,7 @@ namespace MotorcycleRidingWeather.ViewModels
         }
 
         private string _maxRidingTempLabel = "Max riding temp (F)";
-        public string MaxRidingTempLabel 
+        public string MaxRidingTempLabel
         {
             get { return _maxRidingTempLabel; }
             set { SetProperty(ref _maxRidingTempLabel, value); }
@@ -50,14 +54,12 @@ namespace MotorcycleRidingWeather.ViewModels
                     TemperatureScaleType = "Fahrenheit";
                     MaxRidingTempLabel = "Max riding temp (F)";
                     MinRidingTempLabel = "Min riding tmep (F)";
-                    //ConvertTempsToFahrenheit();
                 }
                 else
                 {
                     TemperatureScaleType = "Celcius";
                     MaxRidingTempLabel = "Max riding temp (C)";
                     MinRidingTempLabel = "Min riding tmep (C)";
-                    //ConvertTmpsToCelcius();
                 }
             }
         }
@@ -68,7 +70,7 @@ namespace MotorcycleRidingWeather.ViewModels
             get { return _minRidingTemp; }
             set { SetProperty(ref _minRidingTemp, value); }
         }
-         
+
         private int _maxRidingTemp;
         public int MaxRidingTemp
         {
@@ -76,12 +78,22 @@ namespace MotorcycleRidingWeather.ViewModels
             set { SetProperty(ref _maxRidingTemp, value); }
         }
 
+
         public SettingsPageViewModel(INavigationService navigationService)
             : base(navigationService)
         {
             Title = "Settings";
 
+            NavigateBack = new DelegateCommand(OnNavigateBack);
+
             _navigationService = navigationService;
+
+        }
+
+        private void OnNavigateBack()
+        {
+            SaveUserSettings();
+            _navigationService.GoBackAsync();
         }
 
         public override void OnNavigatingTo(NavigationParameters parameters)
@@ -91,32 +103,14 @@ namespace MotorcycleRidingWeather.ViewModels
 
         private void InitalizePageWithUserSettings()
         {
-            MaxRidingTemp = AppSettings.GetValueOrDefault(nameof(MaxRidingTemp), 90);
-            MinRidingTemp = AppSettings.GetValueOrDefault(nameof(MinRidingTemp), 40);
+            MaxRidingTemp = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MAX_TEMP, 90);
+            MinRidingTemp = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MIN_TEMP, 40);
         }
 
-        public override void OnNavigatedFrom(NavigationParameters parameters)
+        private async void SaveUserSettings()
         {
-            SaveUserSettings();
-        }
-
-        private void SaveUserSettings()
-        {
-            AppSettings.AddOrUpdateValue(nameof(MaxRidingTemp), MaxRidingTemp);
-            AppSettings.AddOrUpdateValue(nameof(MinRidingTemp), MinRidingTemp);
-        }
-
-        private void ConvertTempsToFahrenheit()
-        {
-            MinRidingTemp = (int)(((9.0 / 5.0) * MinRidingTemp) + 32);
-            MaxRidingTemp = (int)((9.0 / 5.0) * MaxRidingTemp) + 32;
-
-        }
-
-        private void ConvertTmpsToCelcius()
-        {
-            MinRidingTemp = (int)((5.0 / 9.0) * (MinRidingTemp - 32));
-            MaxRidingTemp = (int)((5.0 / 9.0) * (MaxRidingTemp - 32));
+            AppSettings.AddOrUpdateValue(AppSettingKeys.USER_MAX_TEMP, MaxRidingTemp);
+            AppSettings.AddOrUpdateValue(AppSettingKeys.USER_MIN_TEMP, MinRidingTemp);
         }
     }
 }

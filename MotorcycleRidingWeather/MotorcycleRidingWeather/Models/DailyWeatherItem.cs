@@ -2,16 +2,29 @@
 using System.Globalization;
 using System.Runtime.Serialization;
 using DarkSkyApi;
+using MotorcycleRidingWeather.Constants;
+using Plugin.Settings;
+using Plugin.Settings.Abstractions;
+using Prism.Mvvm;
 using Xamarin.Forms;
 
 namespace MotorcycleRidingWeather.Models
 {
-    public class DailyWeatherItem
+    public class DailyWeatherItem : BindableBase
     {
+        private static ISettings AppSettings => CrossSettings.Current;
+
         public bool IsGoodRidingDay
         {
-            get
+            get 
             {
+                var maxTemp = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MAX_TEMP, 90);
+                var minTemp = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MIN_TEMP, 40);
+                if (HighTemperature > maxTemp
+                    || LowTemperature < minTemp)
+                {
+                    return false;
+                }
                 return true;
             }
         }
@@ -28,14 +41,13 @@ namespace MotorcycleRidingWeather.Models
         {
             get
             {
-                if (HighTemperature > 80 || LowTemperature < 30)
+                if (IsGoodRidingDay)
                 {
-                    return Color.MistyRose;
+                    return Color.MediumSeaGreen;
                 }
 
-                return Color.MediumSeaGreen;
+                return Color.MistyRose;
             }
-
         }
 
         /// <summary>
@@ -149,7 +161,7 @@ namespace MotorcycleRidingWeather.Models
             get
             {
                 var monthAsString = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Time.Month);
-                return $"{Time.DayOfWeek} {monthAsString.Substring(0,3)} {Time.Day}";
+                return $"{Time.DayOfWeek} {monthAsString.Substring(0, 3)} {Time.Day}";
             }
         }
 
@@ -536,5 +548,5 @@ namespace MotorcycleRidingWeather.Models
         }
     }
 }
-    
+
 
