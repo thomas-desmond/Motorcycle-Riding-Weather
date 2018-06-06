@@ -8,3 +8,6 @@ Intended functionality
  - Highlight good days in great
  - Highlight bad days in red
  - Add lots more
+
+
+Icons made by Freepik from www.flaticon.com 
