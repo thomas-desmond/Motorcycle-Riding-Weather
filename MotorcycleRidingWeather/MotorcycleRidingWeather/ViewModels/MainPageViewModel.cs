@@ -11,6 +11,7 @@ using DarkSkyApi.Models;
 using Xamarin.Forms;
 using Plugin.Settings.Abstractions;
 using Plugin.Settings;
+using MotorcycleRidingWeather.Services;
 
 namespace MotorcycleRidingWeather.ViewModels
 {
@@ -21,6 +22,7 @@ namespace MotorcycleRidingWeather.ViewModels
         public DelegateCommand NavigateToSettingsPage { get; set; }
 
         INavigationService _navigationService;
+        ISessionData _sessionData;
 
         private ObservableCollection<DailyWeatherItem> _weatherDisplayInformation;
         public ObservableCollection<DailyWeatherItem> WeatherDisplayInformation
@@ -29,10 +31,13 @@ namespace MotorcycleRidingWeather.ViewModels
             set { SetProperty(ref _weatherDisplayInformation, value); }
         }
 
-        public MainPageViewModel(INavigationService navigationService)
+        public MainPageViewModel(INavigationService navigationService,
+                                 ISessionData sessionData)
             : base(navigationService)
         {
-            Title = "Main Page";
+            _sessionData = sessionData;
+
+            Title = "San Marcos";
             NavigateToSettingsPage = new DelegateCommand(OnNavigateToSettingsPage);
 
             _navigationService = navigationService;
@@ -48,7 +53,7 @@ namespace MotorcycleRidingWeather.ViewModels
             if (WeatherDisplayInformation == null
                 || WeatherDisplayInformation.Count <= 0)
             {
-                var allForecastData = await GetWeatherByLongLat();
+                var allForecastData = await _sessionData.GetWeatherByLongLat();
                 var allDailyDataToDisplay = GrabDailyDataNeeded(allForecastData);
                 WeatherDisplayInformation = allDailyDataToDisplay;
             }
@@ -70,20 +75,11 @@ namespace MotorcycleRidingWeather.ViewModels
                     WindSpeed = day.WindSpeed,
                     PrecipitationProbability = day.PrecipitationProbability,
                     Time = day.Time,
-
                 };
 
                 dailyInfoToDisplay.Add(dayInfo);
             }
             return dailyInfoToDisplay;
-        }
-
-        internal async Task<Forecast> GetWeatherByLongLat()
-        {
-            var client = new DarkSkyService(Keys.DarkSkyKey);
-            Forecast result = await client.GetWeatherDataAsync(33.1345692, -117.2403483);
-            return result;
-
         }
     }
 }

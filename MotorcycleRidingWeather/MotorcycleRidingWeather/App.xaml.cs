@@ -5,6 +5,8 @@ using MotorcycleRidingWeather.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Prism.Unity;
+using MotorcycleRidingWeather.Services;
+using Unity.Lifetime;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MotorcycleRidingWeather
@@ -32,6 +34,9 @@ namespace MotorcycleRidingWeather
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
             containerRegistry.RegisterForNavigation<SettingsPage>();
+
+            containerRegistry.RegisterSingleton<ISessionData, SessionData>();
+
         }
 
     }
