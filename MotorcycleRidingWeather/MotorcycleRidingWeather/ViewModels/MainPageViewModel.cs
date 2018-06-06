@@ -53,33 +53,12 @@ namespace MotorcycleRidingWeather.ViewModels
             if (WeatherDisplayInformation == null
                 || WeatherDisplayInformation.Count <= 0)
             {
-                var allForecastData = await _sessionData.GetWeatherByLongLat();
-                var allDailyDataToDisplay = GrabDailyDataNeeded(allForecastData);
-                WeatherDisplayInformation = allDailyDataToDisplay;
+                WeatherDisplayInformation = await _sessionData.GetWeatherByLongLat();
             }
             else
             {
                 WeatherDisplayInformation = new ObservableCollection<DailyWeatherItem>(WeatherDisplayInformation);
             }
-        }
-
-        private ObservableCollection<DailyWeatherItem> GrabDailyDataNeeded(Forecast allForecastData)
-        {
-            var dailyInfoToDisplay = new ObservableCollection<DailyWeatherItem>();
-            foreach (var day in allForecastData.Daily.Days)
-            {
-                var dayInfo = new DailyWeatherItem()
-                {
-                    HighTemperature = day.HighTemperature,
-                    LowTemperature = day.LowTemperature,
-                    WindSpeed = day.WindSpeed,
-                    PrecipitationProbability = day.PrecipitationProbability,
-                    Time = day.Time,
-                };
-
-                dailyInfoToDisplay.Add(dayInfo);
-            }
-            return dailyInfoToDisplay;
         }
     }
 }

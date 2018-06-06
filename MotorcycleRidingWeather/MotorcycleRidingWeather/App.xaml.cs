@@ -35,7 +35,7 @@ namespace MotorcycleRidingWeather
             containerRegistry.RegisterForNavigation<MainPage>();
             containerRegistry.RegisterForNavigation<SettingsPage>();
 
-            containerRegistry.RegisterSingleton<ISessionData, SessionData>();
+            containerRegistry.Register<ISessionData, SessionData>();
 
         }
 

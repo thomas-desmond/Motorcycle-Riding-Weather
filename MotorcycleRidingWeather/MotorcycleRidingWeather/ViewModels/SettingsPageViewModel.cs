@@ -13,6 +13,7 @@ namespace MotorcycleRidingWeather.ViewModels
         INavigationService _navigationService;
 
         public DelegateCommand NavigateBack { get; set; }
+        public DelegateCommand GetRidingWeatherCommand { get; set; }
 
         private string _temperatureScaleType;
         public string TemperatureScaleType
@@ -85,9 +86,15 @@ namespace MotorcycleRidingWeather.ViewModels
             Title = "Settings";
 
             NavigateBack = new DelegateCommand(OnNavigateBack);
+            GetRidingWeatherCommand = new DelegateCommand(OnGetRidingWeather);
 
             _navigationService = navigationService;
 
+        }
+
+        private void OnGetRidingWeather()
+        {
+            // Do stuff to update weather. How do we stop people from making tons of calls?
         }
 
         private void OnNavigateBack()
