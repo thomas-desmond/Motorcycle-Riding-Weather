@@ -6,6 +6,7 @@ namespace MotorcycleRidingWeather.Constants
 
         public const string USER_MAX_TEMP = "UserMaxTemp";
         public const string USER_MIN_TEMP = "UserMinTemp";
+        public const string USER_LOCATION = "UserLocation";
     }
 
 }

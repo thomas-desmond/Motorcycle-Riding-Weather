@@ -51,9 +51,13 @@ namespace MotorcycleRidingWeather.ViewModels
         public override async void OnNavigatingTo(NavigationParameters parameters)
 		{
             if (WeatherDisplayInformation == null
-                || WeatherDisplayInformation.Count <= 0)
+                || WeatherDisplayInformation.Count <= 0
+                || Settings.UserChangedLocation == true)
             {
-                WeatherDisplayInformation = await _sessionData.GetWeatherByLongLat();
+                var zipCode = AppSettings.GetValueOrDefault(AppSettingKeys.USER_LOCATION, "92027");
+                Title = zipCode;
+                WeatherDisplayInformation = await _sessionData.GetWeatherByZipCode(zipCode);
+                Settings.UserChangedLocation = false;
             }
             else
             {

@@ -98,7 +98,7 @@ namespace MotorcycleRidingWeather.ViewModels
 
         private void OnGetRidingWeather()
         {
-            var dailyWeatherData = _sessionData.GetWeatherByZipCode(LocationText);
+            Settings.UserChangedLocation = true;
         }
 
         private void OnNavigateBack()
@@ -116,12 +116,14 @@ namespace MotorcycleRidingWeather.ViewModels
         {
             MaxRidingTemp = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MAX_TEMP, 90);
             MinRidingTemp = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MIN_TEMP, 40);
+            LocationText = AppSettings.GetValueOrDefault(AppSettingKeys.USER_LOCATION, string.Empty);
         }
 
         private async void SaveUserSettings()
         {
             AppSettings.AddOrUpdateValue(AppSettingKeys.USER_MAX_TEMP, MaxRidingTemp);
             AppSettings.AddOrUpdateValue(AppSettingKeys.USER_MIN_TEMP, MinRidingTemp);
+            AppSettings.AddOrUpdateValue(AppSettingKeys.USER_LOCATION, LocationText);
         }
     }
 }

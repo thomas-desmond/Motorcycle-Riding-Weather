@@ -8,6 +8,6 @@ namespace MotorcycleRidingWeather.Services
     {
         ObservableCollection<DailyWeatherItem> SessionDailyWeatherData { get; set; }
         Task<ObservableCollection<DailyWeatherItem>> GetWeatherByZipCode(string zipCode);
-        Task<ObservableCollection<DailyWeatherItem>> GetWeatherByLongLat();
+        Task<ObservableCollection<DailyWeatherItem>> GetWeatherBySettingValue();
     }
 }

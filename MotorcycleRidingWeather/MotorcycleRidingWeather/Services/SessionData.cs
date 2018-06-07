@@ -41,7 +41,7 @@ namespace MotorcycleRidingWeather.Services
         }
 
 
-        public async Task<ObservableCollection<DailyWeatherItem>> GetWeatherByLongLat()
+        public async Task<ObservableCollection<DailyWeatherItem>> GetWeatherBySettingValue()
         {
             Forecast allForecastData = await darkSkyService.GetWeatherDataAsync(33.1345692, -117.2403483);
             SessionDailyWeatherData = GrabDailyData(allForecastData);

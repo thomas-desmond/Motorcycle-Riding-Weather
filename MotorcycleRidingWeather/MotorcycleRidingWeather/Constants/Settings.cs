@@ -5,5 +5,7 @@ namespace MotorcycleRidingWeather.Constants
     {
         public static int MAX_TEMP = 80;
         public static int MIN_TEMP = 60;
+
+        public static bool UserChangedLocation = false;
     }
 }
