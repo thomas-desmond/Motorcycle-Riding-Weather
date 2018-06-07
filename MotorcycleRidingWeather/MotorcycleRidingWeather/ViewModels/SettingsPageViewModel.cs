@@ -1,5 +1,6 @@
 ﻿using System;
 using MotorcycleRidingWeather.Constants;
+using MotorcycleRidingWeather.Services;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 using Prism.Commands;
@@ -10,7 +11,9 @@ namespace MotorcycleRidingWeather.ViewModels
     public class SettingsPageViewModel : ViewModelBase
     {
         private static ISettings AppSettings => CrossSettings.Current;
+
         INavigationService _navigationService;
+        ISessionData _sessionData;
 
         public DelegateCommand NavigateBack { get; set; }
         public DelegateCommand GetRidingWeatherCommand { get; set; }
@@ -80,7 +83,8 @@ namespace MotorcycleRidingWeather.ViewModels
         }
 
 
-        public SettingsPageViewModel(INavigationService navigationService)
+        public SettingsPageViewModel(INavigationService navigationService,
+                                     ISessionData sessionData)
             : base(navigationService)
         {
             Title = "Settings";
@@ -89,12 +93,12 @@ namespace MotorcycleRidingWeather.ViewModels
             GetRidingWeatherCommand = new DelegateCommand(OnGetRidingWeather);
 
             _navigationService = navigationService;
-
+            _sessionData = sessionData;
         }
 
         private void OnGetRidingWeather()
         {
-            // Do stuff to update weather. How do we stop people from making tons of calls?
+            var dailyWeatherData = _sessionData.GetWeatherByZipCode(LocationText);
         }
 
         private void OnNavigateBack()

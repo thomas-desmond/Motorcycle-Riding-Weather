@@ -43,6 +43,18 @@
                             Label="Location"
                             Placeholder="Please enter zip code or city"
                             Text="{Binding LocationText}" />
+                        <ViewCell>
+                            <StackLayout
+                                Orientation="Horizontal"
+                                HorizontalOptions="Center">
+                                <Button
+                                    Text="Get Riding Weather"
+                                    Command="{Binding GetRidingWeatherCommand}"
+                                    BorderRadius="15"
+                                    BorderWidth="2"
+                                    BorderColor="Blue" />
+                            </StackLayout>
+                        </ViewCell>
                     </TableSection>
                     <TableSection
                         Title="Temperatures">

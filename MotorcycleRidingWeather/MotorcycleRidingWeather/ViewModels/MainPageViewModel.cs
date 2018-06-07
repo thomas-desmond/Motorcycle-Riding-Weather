@@ -57,7 +57,8 @@ namespace MotorcycleRidingWeather.ViewModels
             }
             else
             {
-                WeatherDisplayInformation = new ObservableCollection<DailyWeatherItem>(WeatherDisplayInformation);
+                WeatherDisplayInformation = 
+                    new ObservableCollection<DailyWeatherItem>(_sessionData.SessionDailyWeatherData);
             }
         }
     }

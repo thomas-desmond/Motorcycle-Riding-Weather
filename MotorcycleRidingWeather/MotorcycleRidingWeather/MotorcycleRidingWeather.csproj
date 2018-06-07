@@ -11,6 +11,8 @@
     <PackageReference Include="DarkSkyApi" Version="3.3.0" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
     <PackageReference Include="Prism.Unity" Version="6.3.0" />
+    <PackageReference Include="Geocoding.Core" Version="4.0.1" />
+    <PackageReference Include="Geocoding.MapQuest" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>

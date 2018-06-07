@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using DarkSkyApi;
 using DarkSkyApi.Models;
+using Geocoding;
+using Geocoding.MapQuest;
 using MotorcycleRidingWeather.Constants;
 using MotorcycleRidingWeather.Models;
 using Prism.Mvvm;
@@ -11,17 +14,36 @@ namespace MotorcycleRidingWeather.Services
 {
     public class SessionData : BindableBase, ISessionData
     {
+        internal IGeocoder geocoder;
+        internal DarkSkyService darkSkyService;
+
+        public SessionData()
+        {
+            geocoder = new MapQuestGeocoder(Keys.MapQuestKey);
+            darkSkyService = new DarkSkyService(Keys.DarkSkyKey);
+        }
+
+        private ObservableCollection<DailyWeatherItem> _sessionDailyWeatherData;
         public ObservableCollection<DailyWeatherItem> SessionDailyWeatherData
         {
-            get;
-            set;
+            get { return _sessionDailyWeatherData; }
+            set { SetProperty(ref _sessionDailyWeatherData, value); }
+        }
+
+        public async Task<ObservableCollection<DailyWeatherItem>> GetWeatherByZipCode(string zipCode)
+        {
+            var locationData = await geocoder.GeocodeAsync(zipCode);
+            var latitude = locationData.First().Coordinates.Latitude;
+            var longitude = locationData.First().Coordinates.Longitude;
+            Forecast allForecastData = await darkSkyService.GetWeatherDataAsync(latitude, longitude);
+            SessionDailyWeatherData = GrabDailyData(allForecastData);
+            return SessionDailyWeatherData;
         }
 
 
         public async Task<ObservableCollection<DailyWeatherItem>> GetWeatherByLongLat()
         {
-            var client = new DarkSkyService(Keys.DarkSkyKey);
-            Forecast allForecastData = await client.GetWeatherDataAsync(33.1345692, -117.2403483);
+            Forecast allForecastData = await darkSkyService.GetWeatherDataAsync(33.1345692, -117.2403483);
             SessionDailyWeatherData = GrabDailyData(allForecastData);
             return SessionDailyWeatherData;
         }
