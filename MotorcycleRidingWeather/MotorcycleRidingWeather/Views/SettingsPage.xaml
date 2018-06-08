@@ -16,6 +16,14 @@
                     <ColumnDefinition
                         Width="*" />
                 </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="0"
+                    Text="Back"
+                    FontAttributes="Bold"
+                    Margin="5,0,0,0"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Command="{Binding NavigateBack}" />
                 <Label
                     Grid.Column="1"
                     HorizontalOptions="Center"
@@ -23,14 +31,6 @@
                     FontAttributes="Bold"
                     FontSize="20"
                     Text="{Binding Title}" />
-                <Button
-                    Grid.Column="2"
-                    Text="Back"
-                    FontAttributes="Bold"
-                    Margin="0,0,5,0"
-                    HorizontalOptions="End"
-                    VerticalOptions="Center"
-                    Command="{Binding NavigateBack}" />
             </Grid>
             <TableView
                 Intent="Settings">
@@ -49,18 +49,12 @@
                                 HorizontalOptions="Center">
                                 <Button
                                     Text="Get Riding Weather"
-                                    Command="{Binding GetRidingWeatherCommand}"
-                                    BorderRadius="15"
-                                    BorderWidth="2"
-                                    BorderColor="Blue" />
+                                    Command="{Binding GetRidingWeatherCommand}" />
                             </StackLayout>
                         </ViewCell>
                     </TableSection>
                     <TableSection
                         Title="Temperatures">
-                        <SwitchCell
-                            Text="{Binding TemperatureScaleType}"
-                            On="{Binding IsFahrenheit}" />
                         <EntryCell
                             HorizontalTextAlignment="Center"
                             Keyboard="Numeric"

@@ -43,10 +43,18 @@ namespace MotorcycleRidingWeather.Models
             {
                 if (IsGoodRidingDay)
                 {
-                    return Color.MediumSeaGreen;
+                    return Color.FromHex("8A00CC00");
                 }
 
-                return Color.MistyRose;
+                return Color.FromHex("8AFF7F7F");
+            }
+        }
+
+        public string PrecipitationString 
+        {
+            get
+            {
+                return $"{PrecipitationProbability * 100}% chance of {PrecipitationType}";
             }
         }
 

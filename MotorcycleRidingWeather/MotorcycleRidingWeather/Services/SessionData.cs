@@ -60,6 +60,7 @@ namespace MotorcycleRidingWeather.Services
                     WindSpeed = day.WindSpeed,
                     PrecipitationProbability = day.PrecipitationProbability,
                     Time = day.Time,
+                    PrecipitationType = day.PrecipitationType,
                 };
 
                 dailyInfoToDisplay.Add(dayInfo);

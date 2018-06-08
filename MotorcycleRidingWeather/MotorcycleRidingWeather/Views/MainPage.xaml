@@ -45,6 +45,8 @@
                                     Height="Auto" />
                                 <RowDefinition
                                     Height="Auto" />
+                                <RowDefinition
+                                    Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition
@@ -87,10 +89,14 @@
                                     VerticalOptions="Center"
                                     Text="{Binding Path=HighTemperature, StringFormat='High:{0:0}'}"
                                     FontSize="Medium" />
+                            </StackLayout>
+                            <StackLayout
+                                Grid.Row="2"
+                                Grid.Column="1">
                                 <Label
                                     x:Name="PrecipitationPercentage"
                                     VerticalOptions="Center"
-                                    Text="{Binding Path=PrecipitationProbability, StringFormat='Precip:{0}%'}"
+                                    Text="{Binding Path=PrecipitationString}"
                                     FontSize="Medium" />
                             </StackLayout>
                         </Grid>
