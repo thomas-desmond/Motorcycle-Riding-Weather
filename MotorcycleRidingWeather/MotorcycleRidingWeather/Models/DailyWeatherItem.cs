@@ -20,8 +20,10 @@ namespace MotorcycleRidingWeather.Models
             {
                 var maxTemp = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MAX_TEMP, 90);
                 var minTemp = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MIN_TEMP, 40);
+                var maxPrecipPercent = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MAX_PRECIP_PERCENT, 10);
                 if (HighTemperature > maxTemp
-                    || LowTemperature < minTemp)
+                    || LowTemperature < minTemp
+                    || PrecipitationProbability > maxPrecipPercent)
                 {
                     return false;
                 }

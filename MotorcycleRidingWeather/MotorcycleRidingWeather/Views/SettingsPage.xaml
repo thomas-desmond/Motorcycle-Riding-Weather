@@ -66,6 +66,28 @@
                             Label="{Binding MinRidingTempLabel}"
                             Text="{Binding MinRidingTemp}" />
                     </TableSection>
+                    <TableSection
+                        Title="Rain And Wind">
+                        <ViewCell>
+                            <StackLayout
+                                Margin="3,0"
+                                Orientation="Horizontal"
+                                HorizontalOptions="FillAndExpand">
+                                <Label
+                                    Text="Max Rain %"
+                                    VerticalOptions="Center" />
+                                <Slider
+                                    x:Name="RainSlider"
+                                    Minimum="0"
+                                    Maximum="100"
+                                    Value="{Binding MaxPrecipitationPercent}"
+                                    HorizontalOptions="FillAndExpand" />
+                                <Label
+                                    Text="{Binding MaxPrecipitationPercent}"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
                 </TableRoot>
             </TableView>
         </StackLayout>
