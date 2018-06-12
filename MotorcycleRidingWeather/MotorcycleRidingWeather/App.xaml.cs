@@ -4,9 +4,8 @@ using MotorcycleRidingWeather.ViewModels;
 using MotorcycleRidingWeather.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Prism.Unity;
 using MotorcycleRidingWeather.Services;
-using Unity.Lifetime;
+using Prism.DryIoc;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MotorcycleRidingWeather
