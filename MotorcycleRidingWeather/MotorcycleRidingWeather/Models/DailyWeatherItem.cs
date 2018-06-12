@@ -23,7 +23,7 @@ namespace MotorcycleRidingWeather.Models
                 var maxPrecipPercent = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MAX_PRECIP_PERCENT, 10);
                 if (HighTemperature > maxTemp
                     || LowTemperature < minTemp
-                    || PrecipitationProbability > maxPrecipPercent)
+                    || (PrecipitationProbability * 100) > maxPrecipPercent)
                 {
                     return false;
                 }
@@ -56,6 +56,10 @@ namespace MotorcycleRidingWeather.Models
         {
             get
             {
+                if(string.IsNullOrWhiteSpace(PrecipitationType))
+                {
+                    PrecipitationType = "rain";
+                }
                 return $"{PrecipitationProbability * 100}% chance of {PrecipitationType}";
             }
         }
