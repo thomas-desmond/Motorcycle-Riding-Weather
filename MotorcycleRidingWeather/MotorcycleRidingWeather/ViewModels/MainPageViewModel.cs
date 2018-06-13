@@ -31,6 +31,13 @@ namespace MotorcycleRidingWeather.ViewModels
             set { SetProperty(ref _weatherDisplayInformation, value); }
         }
 
+        private bool _isRefreshActive;
+        public bool IsRefreshActive
+        {
+            get { return _isRefreshActive; }
+            set { SetProperty(ref _isRefreshActive, value); }
+        }
+
         public MainPageViewModel(INavigationService navigationService,
                                  ISessionData sessionData)
             : base(navigationService)
@@ -55,8 +62,14 @@ namespace MotorcycleRidingWeather.ViewModels
                 || Settings.UserChangedLocation == true)
             {
                 var zipCode = AppSettings.GetValueOrDefault(AppSettingKeys.USER_LOCATION, "92027");
+                if (string.IsNullOrWhiteSpace(zipCode))
+                {
+                    zipCode = "92027";
+                }
                 Title = zipCode;
+                IsRefreshActive = true;
                 WeatherDisplayInformation = await _sessionData.GetWeatherByZipCode(zipCode);
+                IsRefreshActive = false;
                 Settings.UserChangedLocation = false;
             }
             else

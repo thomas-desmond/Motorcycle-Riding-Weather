@@ -1,6 +1,8 @@
 ﻿using Android.App;
 using Android.Content.PM;
+using Android.Gms.Ads;
 using Android.OS;
+using MotorcycleRidingWeather.Constants;
 using Prism;
 using Prism.Ioc;
 
@@ -16,6 +18,8 @@ namespace MotorcycleRidingWeather.Droid
 
             base.OnCreate(bundle);
 
+            MobileAds.Initialize(ApplicationContext, Keys.ADMOD_APP_ID);
+            
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
         }

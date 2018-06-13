@@ -3,17 +3,18 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:controls="clr-namespace:MotorcycleRidingWeather.Controls;assembly=MotorcycleRidingWeather"
     ios:Page.UseSafeArea="true"
     x:Class="MotorcycleRidingWeather.Views.MainPage">
     <StackLayout>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
                     Width="2*" />
                 <ColumnDefinition
-                    Width="*" />
+                    Width="3*" />
+                <ColumnDefinition
+                    Width="2*" />
             </Grid.ColumnDefinitions>
             <Label
                 Grid.Column="1"
@@ -27,13 +28,14 @@
                 Text="Settings"
                 FontAttributes="Bold"
                 Margin="0,0,5,0"
-                HorizontalOptions="End"
+                HorizontalOptions="EndAndExpand"
                 VerticalOptions="Center"
                 Command="{Binding NavigateToSettingsPage}" />
         </Grid>
         <ListView
             ItemsSource="{Binding WeatherDisplayInformation}"
-            HasUnevenRows="true">
+            HasUnevenRows="true"
+            IsRefreshing="{Binding IsRefreshActive}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
