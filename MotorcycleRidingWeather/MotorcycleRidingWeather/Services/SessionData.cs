@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using DarkSkyApi;
@@ -21,6 +20,7 @@ namespace MotorcycleRidingWeather.Services
         {
             geocoder = new MapQuestGeocoder(Keys.MapQuestKey);
             darkSkyService = new DarkSkyService(Keys.DarkSkyKey);
+
         }
 
         private ObservableCollection<DailyWeatherItem> _sessionDailyWeatherData;

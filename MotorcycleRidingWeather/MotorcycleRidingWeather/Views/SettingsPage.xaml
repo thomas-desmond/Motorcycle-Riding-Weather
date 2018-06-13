@@ -90,6 +90,10 @@
                     </TableSection>
                 </TableRoot>
             </TableView>
+            <Button
+                Text="Send Feedback"
+                HorizontalOptions="FillAndExpand"
+                Command="{Binding SendFeedbackCommand}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

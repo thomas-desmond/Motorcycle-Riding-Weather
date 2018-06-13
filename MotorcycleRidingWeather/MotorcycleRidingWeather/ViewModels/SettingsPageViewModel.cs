@@ -1,6 +1,7 @@
 ﻿using System;
 using MotorcycleRidingWeather.Constants;
 using MotorcycleRidingWeather.Services;
+using Plugin.Messaging;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 using Prism.Commands;
@@ -17,6 +18,7 @@ namespace MotorcycleRidingWeather.ViewModels
 
         public DelegateCommand NavigateBack { get; set; }
         public DelegateCommand GetRidingWeatherCommand { get; set; }
+        public DelegateCommand SendFeedbackCommand { get; set; }
 
         private string _temperatureScaleType;
         public string TemperatureScaleType
@@ -98,11 +100,27 @@ namespace MotorcycleRidingWeather.ViewModels
 
             NavigateBack = new DelegateCommand(OnNavigateBack);
             GetRidingWeatherCommand = new DelegateCommand(OnGetRidingWeather);
+            SendFeedbackCommand = new DelegateCommand(SendFeedback);
+
 
             _navigationService = navigationService;
             _sessionData = sessionData;
         }
 
+        private void SendFeedback()
+        {
+            var emailMessenger = CrossMessaging.Current.EmailMessenger;
+
+            if (emailMessenger.CanSendEmail == false)
+            {
+                return;
+            }
+            emailMessenger.SendEmail("motorcycleridingweather@gmail.com",
+                                "Motorcycle Riding Weather Feedback",
+                                "Please provide any feedback below on the app " +
+                                 "such as issues, feature requests, or anything else\n\n" +
+                                 "Thanks!");
+        }
         private void OnGetRidingWeather()
         {
             Settings.UserChangedLocation = true;
