@@ -56,11 +56,7 @@ namespace MotorcycleRidingWeather.Models
         {
             get
             {
-                if(string.IsNullOrWhiteSpace(PrecipitationType))
-                {
-                    PrecipitationType = "rain";
-                }
-                return $"{PrecipitationProbability * 100}% chance of {PrecipitationType}";
+                return $"{PrecipitationProbability * 100}%";
             }
         }
 
@@ -526,6 +522,14 @@ namespace MotorcycleRidingWeather.Models
         /// </summary>
         [DataMember(Name = "cloudCover")]
         public float CloudCover { get; set; }
+
+        public string CloudCoverString
+        {
+            get
+            {
+                return $"{CloudCover * 100}%";
+            }
+        }
 
         /// <summary>
         /// Gets or sets the sea-level air pressure.

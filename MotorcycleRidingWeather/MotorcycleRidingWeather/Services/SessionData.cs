@@ -61,6 +61,7 @@ namespace MotorcycleRidingWeather.Services
                     PrecipitationProbability = day.PrecipitationProbability,
                     Time = day.Time,
                     PrecipitationType = day.PrecipitationType,
+                    CloudCover = day.CloudCover,
                 };
 
                 dailyInfoToDisplay.Add(dayInfo);

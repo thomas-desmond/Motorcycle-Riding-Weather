@@ -104,6 +104,8 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable\bike.png" />
     <AndroidResource Include="Resources\drawable\car.png" />
+    <AndroidResource Include="Resources\drawable\umbrella.png" />
+    <AndroidResource Include="Resources\drawable\cloud.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
