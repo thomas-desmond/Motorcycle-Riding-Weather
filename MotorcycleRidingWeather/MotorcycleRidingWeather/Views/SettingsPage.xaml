@@ -67,11 +67,12 @@
                             Text="{Binding MinRidingTemp}" />
                     </TableSection>
                     <TableSection
-                        Title="Rain And Wind">
+                        Title="Rain Wind and UV Index">
                         <ViewCell>
                             <StackLayout
-                                Margin="3,0"
+                                Margin="3,3"
                                 Orientation="Horizontal"
+                                BackgroundColor="White"
                                 HorizontalOptions="FillAndExpand">
                                 <Label
                                     Text="Max Rain %"
@@ -84,6 +85,26 @@
                                     HorizontalOptions="FillAndExpand" />
                                 <Label
                                     Text="{Binding MaxPrecipitationPercent}"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout
+                                Margin="3,3"
+                                Orientation="Horizontal"
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand">
+                                <Label
+                                    Text="Max UV Index"
+                                    VerticalOptions="Center" />
+                                <Slider
+                                    x:Name="UvIndexSlider"
+                                    Minimum="0"
+                                    Maximum="11"
+                                    Value="{Binding MaxUvIndex}"
+                                    HorizontalOptions="FillAndExpand" />
+                                <Label
+                                    Text="{Binding MaxUvIndex}"
                                     VerticalOptions="Center" />
                             </StackLayout>
                         </ViewCell>

@@ -20,6 +20,13 @@ namespace MotorcycleRidingWeather.ViewModels
         public DelegateCommand GetRidingWeatherCommand { get; set; }
         public DelegateCommand SendFeedbackCommand { get; set; }
 
+        private int _maxUvIndex;
+        public int MaxUvIndex
+        {
+            get { return _maxUvIndex; }
+            set { SetProperty(ref _maxUvIndex, value); }
+        }
+
         private string _temperatureScaleType;
         public string TemperatureScaleType
         {
@@ -143,6 +150,7 @@ namespace MotorcycleRidingWeather.ViewModels
             MinRidingTemp = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MIN_TEMP, 40);
             LocationText = AppSettings.GetValueOrDefault(AppSettingKeys.USER_LOCATION, string.Empty);
             MaxPrecipitationPercent = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MAX_PRECIP_PERCENT, 10);
+            MaxUvIndex = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MAX_UV_INDEX, 10);
         }
 
         private async void SaveUserSettings()
@@ -151,6 +159,7 @@ namespace MotorcycleRidingWeather.ViewModels
             AppSettings.AddOrUpdateValue(AppSettingKeys.USER_MIN_TEMP, MinRidingTemp);
             AppSettings.AddOrUpdateValue(AppSettingKeys.USER_LOCATION, LocationText);
             AppSettings.AddOrUpdateValue(AppSettingKeys.USER_MAX_PRECIP_PERCENT, MaxPrecipitationPercent);
+            AppSettings.AddOrUpdateValue(AppSettingKeys.USER_MAX_UV_INDEX, MaxUvIndex);
         }
     }
 }
