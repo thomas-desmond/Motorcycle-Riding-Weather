@@ -112,6 +112,15 @@
                                         x:Name="CloudCoverPercentage"
                                         VerticalOptions="Center"
                                         Text="{Binding Path=CloudCoverString}"
+                                        Margin="0,0,5,0"
+                                        FontSize="Medium" />
+                                    <Image
+                                        Source="filter-uv.png" />
+                                    <Label
+                                        x:Name="UvIndex"
+                                        VerticalOptions="Center"
+                                        Margin="0,0,5,0"
+                                        Text="{Binding Path=UVIndex}"
                                         FontSize="Medium" />
                                 </StackLayout>
                             </StackLayout>
