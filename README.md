@@ -10,4 +10,4 @@ Intended functionality
  - Add lots more
 
 
-Icons made by Freepik from www.flaticon.com 
+Icons made by Freepik, fjstudio, & Smashicons from www.flaticon.com 
