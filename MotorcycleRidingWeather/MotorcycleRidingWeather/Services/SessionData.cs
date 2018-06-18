@@ -63,6 +63,7 @@ namespace MotorcycleRidingWeather.Services
                     PrecipitationType = day.PrecipitationType,
                     CloudCover = day.CloudCover,
                     UVIndex = day.UVIndex,
+                    WindGust = day.WindGust,
                 };
 
                 dailyInfoToDisplay.Add(dayInfo);
