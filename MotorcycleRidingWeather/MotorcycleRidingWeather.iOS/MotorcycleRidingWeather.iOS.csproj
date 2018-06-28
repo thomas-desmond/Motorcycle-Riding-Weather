@@ -134,7 +134,7 @@
     <BundleResource Include="Resources\bike.png" />
     <BundleResource Include="Resources\umbrella.png" />
     <BundleResource Include="Resources\cloud.png" />
-    <BundleResource Include="Resources\filter-uv.png" />
+    <BundleResource Include="Resources\filter_uv.png" />
     <BundleResource Include="Resources\windy.png" />
     <BundleResource Include="Resources\cloudy.png" />
   </ItemGroup>

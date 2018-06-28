@@ -112,7 +112,7 @@
     <AndroidResource Include="Resources\drawable\car.png" />
     <AndroidResource Include="Resources\drawable\umbrella.png" />
     <AndroidResource Include="Resources\drawable\cloud.png" />
-    <AndroidResource Include="Resources\drawable\filter-uv.png" />
+    <AndroidResource Include="Resources\drawable\filter_uv.png" />
     <AndroidResource Include="Resources\drawable\windy.png" />
     <AndroidResource Include="Resources\drawable\cloudy.png" />
   </ItemGroup>
