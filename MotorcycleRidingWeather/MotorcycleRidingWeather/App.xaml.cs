@@ -6,6 +6,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MotorcycleRidingWeather.Services;
 using Prism.DryIoc;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MotorcycleRidingWeather
@@ -35,6 +38,12 @@ namespace MotorcycleRidingWeather
             containerRegistry.RegisterForNavigation<SettingsPage>();
 
             containerRegistry.Register<ISessionData, SessionData>();
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+            AppCenter.Start("android=bd9c6543-5e1d-424d-975f-25c679571f39;",typeof(Analytics), typeof(Crashes));
         }
 
     }
