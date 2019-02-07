@@ -59,13 +59,13 @@
                         <EntryCell
                             HorizontalTextAlignment="Center"
                             Keyboard="Numeric"
-                            Label="{Binding MaxRidingTempLabel}"
+                            Label="Max Riding Temp"
                             Text="{Binding UserPreferences.MaxRidingTemp}" />
                         <EntryCell
                             HorizontalTextAlignment="Center"
                             Keyboard="Numeric"
-                            Label="{Binding MinRidingTempLabel}"
-                            Text="{Binding MinRidingTemp}" />
+                            Label="Min Riding Temp"
+                            Text="{Binding UserPreferences.MinRidingTemp}" />
                     </TableSection>
                     <TableSection
                         Title="Rain Wind and UV Index">

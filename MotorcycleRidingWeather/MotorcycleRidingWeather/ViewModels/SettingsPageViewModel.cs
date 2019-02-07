@@ -21,10 +21,11 @@ namespace MotorcycleRidingWeather.ViewModels
         public DelegateCommand GetRidingWeatherCommand { get; set; }
         public DelegateCommand SendFeedbackCommand { get; set; }
 
+        private UserPreferences _userPreferences;
         public UserPreferences UserPreferences
         {
-            get;
-            set;
+            get { return _userPreferences; }
+            set { SetProperty(ref _userPreferences, value); }
         }
 
         public SettingsPageViewModel(INavigationService navigationService,
@@ -63,7 +64,7 @@ namespace MotorcycleRidingWeather.ViewModels
 
         private void OnNavigateBack()
         {
-            SaveUserSettings();
+            _sessionData.SaveUserData(UserPreferences);
             _navigationService.GoBackAsync();
         }
 
@@ -75,11 +76,6 @@ namespace MotorcycleRidingWeather.ViewModels
         private void InitalizePageWithUserSettings()
         {
             UserPreferences = _sessionData.GetCurrentUserPreferences();
-        }
-
-        private async void SaveUserSettings()
-        {
-        
         }
     }
 }

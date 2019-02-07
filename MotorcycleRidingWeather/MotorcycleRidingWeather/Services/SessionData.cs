@@ -25,7 +25,8 @@ namespace MotorcycleRidingWeather.Services
         {
             geocoder = new MapQuestGeocoder(Keys.MapQuestKey);
             darkSkyService = new DarkSkyService(Keys.DarkSkyKey);
-
+            CurrentUserPreferences = new UserPreferences();
+            LoadCurrentUserPreferences();
         }
 
         public UserPreferences CurrentUserPreferences
@@ -96,6 +97,10 @@ namespace MotorcycleRidingWeather.Services
 
         public UserPreferences GetCurrentUserPreferences()
         {
+            if (CurrentUserPreferences == null)
+            {
+                LoadCurrentUserPreferences();
+            }
             return CurrentUserPreferences;
         }
 

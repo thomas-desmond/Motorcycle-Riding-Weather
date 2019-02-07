@@ -10,6 +10,7 @@ namespace MotorcycleRidingWeather.Services
         Task<ObservableCollection<DailyWeatherItem>> GetWeatherByZipCode(string zipCode);
         Task<ObservableCollection<DailyWeatherItem>> GetWeatherBySettingValue();
         UserPreferences GetCurrentUserPreferences();
+        void SaveUserData(UserPreferences newUserPreferces);
 
     }
 }
