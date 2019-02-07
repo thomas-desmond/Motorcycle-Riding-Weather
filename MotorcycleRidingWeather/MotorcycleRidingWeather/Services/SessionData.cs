@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using DarkSkyApi;
@@ -7,6 +8,8 @@ using Geocoding;
 using Geocoding.MapQuest;
 using MotorcycleRidingWeather.Constants;
 using MotorcycleRidingWeather.Models;
+using Plugin.Settings;
+using Plugin.Settings.Abstractions;
 using Prism.Mvvm;
 
 namespace MotorcycleRidingWeather.Services
@@ -15,12 +18,20 @@ namespace MotorcycleRidingWeather.Services
     {
         internal IGeocoder geocoder;
         internal DarkSkyService darkSkyService;
+        private static ISettings SavedUserSettings => CrossSettings.Current;
+
 
         public SessionData()
         {
             geocoder = new MapQuestGeocoder(Keys.MapQuestKey);
             darkSkyService = new DarkSkyService(Keys.DarkSkyKey);
 
+        }
+
+        public UserPreferences CurrentUserPreferences
+        {
+            get;
+            set;
         }
 
         private ObservableCollection<DailyWeatherItem> _sessionDailyWeatherData;
@@ -51,6 +62,18 @@ namespace MotorcycleRidingWeather.Services
         private ObservableCollection<DailyWeatherItem> GrabDailyData(Forecast allForecastData)
         {
             var dailyInfoToDisplay = new ObservableCollection<DailyWeatherItem>();
+
+            DateTimeOffset? currentDay = null;
+            var dailyInfoExcludingIgnoreTimes = new DailyWeatherItem();
+            foreach(var hour in allForecastData.Hourly.Hours)
+            {
+                if (currentDay == null || hour.Time.Day != currentDay.Value.Day)
+                {
+                    currentDay = hour.Time;
+                }
+
+            }
+
             foreach (var day in allForecastData.Daily.Days)
             {
                 var dayInfo = new DailyWeatherItem()
@@ -69,6 +92,28 @@ namespace MotorcycleRidingWeather.Services
                 dailyInfoToDisplay.Add(dayInfo);
             }
             return dailyInfoToDisplay;
+        }
+
+        public UserPreferences GetCurrentUserPreferences()
+        {
+            return CurrentUserPreferences;
+        }
+
+        public UserPreferences LoadCurrentUserPreferences()
+        {
+            CurrentUserPreferences.MaxRidingTemp = SavedUserSettings.GetValueOrDefault(AppSettingKeys.USER_MAX_TEMP, 90);
+            CurrentUserPreferences.MinRidingTemp = SavedUserSettings.GetValueOrDefault(AppSettingKeys.USER_MIN_TEMP, 40);
+            CurrentUserPreferences.LocationZipCode = SavedUserSettings.GetValueOrDefault(AppSettingKeys.USER_LOCATION, string.Empty);
+
+            return CurrentUserPreferences;
+        }
+
+        public void SaveUserData(UserPreferences newUserPreferces)
+        {
+            CurrentUserPreferences = newUserPreferces;
+            SavedUserSettings.AddOrUpdateValue(AppSettingKeys.USER_MAX_TEMP, newUserPreferces.MaxRidingTemp);
+            SavedUserSettings.AddOrUpdateValue(AppSettingKeys.USER_MIN_TEMP, newUserPreferces.MinRidingTemp);
+            SavedUserSettings.AddOrUpdateValue(AppSettingKeys.USER_LOCATION, newUserPreferces.LocationZipCode);
         }
     }
 }

@@ -33,7 +33,8 @@
                     Text="{Binding Title}" />
             </Grid>
             <TableView
-                Intent="Settings">
+                Intent="Settings"
+                HasUnevenRows="true">
                 <TableRoot>
                     <TableSection
                         Title="Location">
@@ -59,7 +60,7 @@
                             HorizontalTextAlignment="Center"
                             Keyboard="Numeric"
                             Label="{Binding MaxRidingTempLabel}"
-                            Text="{Binding MaxRidingTemp}" />
+                            Text="{Binding UserPreferences.MaxRidingTemp}" />
                         <EntryCell
                             HorizontalTextAlignment="Center"
                             Keyboard="Numeric"
@@ -106,6 +107,25 @@
                                 <Label
                                     Text="{Binding MaxUvIndex}"
                                     VerticalOptions="Center" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection
+                        Title="Exclude Times">
+                        <ViewCell>
+                            <StackLayout
+                                Orientation="Vertical">
+                                <Label
+                                    Text="Ignore times between" />
+                                <StackLayout
+                                    Orientation="Horizontal">
+                                    <TimePicker
+                                        Time="{Binding IgnoreTimeStart}" />
+                                    <Label
+                                        Text=" and " />
+                                    <TimePicker
+                                        Time="{Binding IgnoreTimeEnd}" />
+                                </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </TableSection>
