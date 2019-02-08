@@ -20,5 +20,11 @@ namespace MotorcycleRidingWeather.Models
             get;
             set;
         }
+
+        public int MaxRainPercentage
+        {
+            get;
+            set;
+        }
     }
 }

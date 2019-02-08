@@ -23,7 +23,7 @@
                     Margin="5,0,0,0"
                     HorizontalOptions="Start"
                     VerticalOptions="Center"
-                    BackgroundColor="Transparent"                   
+                    BackgroundColor="Transparent"
                     Command="{Binding NavigateBack}" />
                 <Label
                     Grid.Column="1"
@@ -68,11 +68,11 @@
                             Label="Min Riding Temp"
                             Text="{Binding UserPreferences.MinRidingTemp}" />
                     </TableSection>
-                    <!--<TableSection
-                        Title="Rain Wind and UV Index">
+                    <TableSection
+                        Title="Rain">
                         <ViewCell>
                             <StackLayout
-                                Margin="3,3"
+                                Margin="5"
                                 Orientation="Horizontal"
                                 BackgroundColor="White"
                                 HorizontalOptions="FillAndExpand">
@@ -83,14 +83,15 @@
                                     x:Name="RainSlider"
                                     Minimum="0"
                                     Maximum="100"
-                                    Value="{Binding MaxPrecipitationPercent}"
+                                    Value="{Binding UserPreferences.MaxRainPercentage}"
                                     HorizontalOptions="FillAndExpand" />
                                 <Label
-                                    Text="{Binding MaxPrecipitationPercent}"
+                                    BindingContext="{x:Reference RainSlider}"
+                                    Text="{Binding Value, StringFormat='{0:F0}%'}"
                                     VerticalOptions="Center" />
                             </StackLayout>
                         </ViewCell>
-                        <ViewCell>
+                        <!-- <ViewCell>
                             <StackLayout
                                 Margin="3,3"
                                 Orientation="Horizontal"
@@ -109,9 +110,9 @@
                                     Text="{Binding MaxUvIndex}"
                                     VerticalOptions="Center" />
                             </StackLayout>
-                        </ViewCell>
+                        </ViewCell>-->
                     </TableSection>
-                    <TableSection
+                    <!-- <TableSection
                         Title="Exclude Times">
                         <ViewCell>
                             <StackLayout

@@ -83,17 +83,23 @@ namespace MotorcycleRidingWeather.ViewModels
                 }
                 Title = zipCode;
                 IsRefreshActive = true;
-                WeatherDisplayInformation = await _sessionData.GetWeatherByZipCode(zipCode);
+                var weatherInfo = await _sessionData.GetWeatherByZipCode(zipCode);
+                WeatherDisplayInformation =
+                    new ObservableCollection<DailyWeatherItem>(weatherInfo);
                 IsRefreshActive = false;
                 Settings.UserChangedLocation = false;
+                TodayWeather = _sessionData.SessionDailyWeatherData[0];
+                WeatherDisplayInformation.RemoveAt(0);
+
             }
             else
             {
                 WeatherDisplayInformation =
                     new ObservableCollection<DailyWeatherItem>(_sessionData.SessionDailyWeatherData);
+                TodayWeather = _sessionData.SessionDailyWeatherData[0];
+                WeatherDisplayInformation.RemoveAt(0);
+
             }
-            TodayWeather = _sessionData.SessionDailyWeatherData[0];
-            WeatherDisplayInformation.RemoveAt(0);
         }
     }
 }

@@ -17,10 +17,11 @@ namespace MotorcycleRidingWeather.Models
 
         public bool IsGoodRidingDay
         {
-            get 
+            get
             {
                 return HighTemperature <= SessionData.CurrentUserPreferences.MaxRidingTemp
-                        && LowTemperature >= SessionData.CurrentUserPreferences.MinRidingTemp;
+                        && LowTemperature >= SessionData.CurrentUserPreferences.MinRidingTemp
+                        && PrecipitationProbability * 100 <= SessionData.CurrentUserPreferences.MaxRainPercentage;
             }
         }
 
@@ -45,7 +46,7 @@ namespace MotorcycleRidingWeather.Models
             }
         }
 
-        public string PrecipitationString 
+        public string PrecipitationString
         {
             get
             {
@@ -171,7 +172,7 @@ namespace MotorcycleRidingWeather.Models
         {
             get
             {
-                return $"{Time.DayOfWeek} Weather"; 
+                return $"{Time.DayOfWeek} Weather";
             }
         }
 

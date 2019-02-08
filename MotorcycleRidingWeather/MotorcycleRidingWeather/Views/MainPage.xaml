@@ -272,5 +272,15 @@
                 AdUnitId="{Binding AddUnitId}"
                 Grid.Row="1" />
         </Grid>
+        <StackLayout.Triggers>
+            <DataTrigger
+                TargetType="StackLayout"
+                Binding="{Binding IsRefreshing}"
+                Value="True">
+                <Setter
+                    Property="IsVisible"
+                    Value="False" />
+            </DataTrigger>
+        </StackLayout.Triggers>
     </StackLayout>
 </ContentPage>

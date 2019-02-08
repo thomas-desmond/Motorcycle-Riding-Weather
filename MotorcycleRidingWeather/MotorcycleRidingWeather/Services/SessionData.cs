@@ -105,6 +105,7 @@ namespace MotorcycleRidingWeather.Services
             CurrentUserPreferences.MaxRidingTemp = SavedUserSettings.GetValueOrDefault(AppSettingKeys.USER_MAX_TEMP, 90);
             CurrentUserPreferences.MinRidingTemp = SavedUserSettings.GetValueOrDefault(AppSettingKeys.USER_MIN_TEMP, 40);
             CurrentUserPreferences.LocationZipCode = SavedUserSettings.GetValueOrDefault(AppSettingKeys.USER_LOCATION, string.Empty);
+            CurrentUserPreferences.MaxRainPercentage = SavedUserSettings.GetValueOrDefault(AppSettingKeys.USER_MAX_PRECIP_PERCENT, 5);
 
             return CurrentUserPreferences;
         }
@@ -115,6 +116,7 @@ namespace MotorcycleRidingWeather.Services
             SavedUserSettings.AddOrUpdateValue(AppSettingKeys.USER_MAX_TEMP, newUserPreferces.MaxRidingTemp);
             SavedUserSettings.AddOrUpdateValue(AppSettingKeys.USER_MIN_TEMP, newUserPreferces.MinRidingTemp);
             SavedUserSettings.AddOrUpdateValue(AppSettingKeys.USER_LOCATION, newUserPreferces.LocationZipCode);
+            SavedUserSettings.AddOrUpdateValue(AppSettingKeys.USER_MAX_PRECIP_PERCENT, newUserPreferces.MaxRainPercentage);
         }
 
     }
