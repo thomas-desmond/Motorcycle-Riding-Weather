@@ -29,7 +29,7 @@ namespace MotorcycleRidingWeather.Services
             LoadCurrentUserPreferences();
         }
 
-        public UserPreferences CurrentUserPreferences
+        public static UserPreferences CurrentUserPreferences
         {
             get;
             set;
@@ -97,10 +97,6 @@ namespace MotorcycleRidingWeather.Services
 
         public UserPreferences GetCurrentUserPreferences()
         {
-            if (CurrentUserPreferences == null)
-            {
-                LoadCurrentUserPreferences();
-            }
             return CurrentUserPreferences;
         }
 
@@ -120,5 +116,6 @@ namespace MotorcycleRidingWeather.Services
             SavedUserSettings.AddOrUpdateValue(AppSettingKeys.USER_MIN_TEMP, newUserPreferces.MinRidingTemp);
             SavedUserSettings.AddOrUpdateValue(AppSettingKeys.USER_LOCATION, newUserPreferces.LocationZipCode);
         }
+
     }
 }

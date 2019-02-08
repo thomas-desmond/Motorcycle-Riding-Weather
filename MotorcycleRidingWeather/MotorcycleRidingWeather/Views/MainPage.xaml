@@ -5,9 +5,12 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:controls="clr-namespace:MotorcycleRidingWeather.Controls;assembly=MotorcycleRidingWeather"
     ios:Page.UseSafeArea="true"
+    BackgroundColor="#90a4ae"
     x:Class="MotorcycleRidingWeather.Views.MainPage">
     <StackLayout>
-        <Grid>
+        <Grid
+            RowSpacing="0"
+            BackgroundColor="#90a4ae">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition
                     Width="2*" />
@@ -16,21 +19,85 @@
                 <ColumnDefinition
                     Width="2*" />
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="50" />
+                <RowDefinition
+                    Height="1" />
+                <RowDefinition
+                    Height="250" />
+            </Grid.RowDefinitions>
             <Label
                 Grid.Column="1"
+                Grid.Row="0"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 FontAttributes="Bold"
                 FontSize="20"
+                TextColor="White"
                 Text="{Binding Title}" />
             <Button
                 Grid.Column="2"
+                Grid.Row="0"
                 Text="Settings"
                 FontAttributes="Bold"
                 Margin="0,0,5,0"
                 HorizontalOptions="EndAndExpand"
                 VerticalOptions="Center"
+                TextColor="White"
+                BackgroundColor="Transparent"
                 Command="{Binding NavigateToSettingsPage}" />
+            <BoxView
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Margin="10,0"
+                BackgroundColor="#37474f" />
+            <Grid
+                Grid.Row="2"
+                Grid.Column="0"
+                Padding="0,3,0,0"
+                Grid.ColumnSpan="3"
+                BackgroundColor="#90a4ae">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    x:Name="CurrentDate"
+                    TextColor="White"
+                    FontSize="Large"
+                    Margin="3,0,0,0"
+                    Text="Todays Weather" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    x:Name="HighLowTemp"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Start"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="65"
+                    Text="{Binding TodayWeather.HighLowFormattedText}" />
+                <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Grid.Row="2">
+                    <Image
+                        Source="bike.png" />
+                    <Label
+                        TextColor="White"
+                        Font="Large"
+                        Text="Today is a good day to ride!" />
+                </StackLayout>
+            </Grid>
         </Grid>
         <ListView
             ItemsSource="{Binding WeatherDisplayInformation}"
@@ -41,6 +108,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <Grid
+                            RowSpacing="1"
                             Padding="0,5"
                             BackgroundColor="{Binding BackgroundColorBasedOnWeather}">
                             <Grid.RowDefinitions>
@@ -52,6 +120,8 @@
                                     Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="Auto" />
                                 <ColumnDefinition
                                     Width="Auto" />
                                 <ColumnDefinition
@@ -75,23 +145,25 @@
                                 Orientation="Horizontal">
                                 <Label
                                     x:Name="DateLabel"
+                                    TextColor="White"
                                     Text="{Binding StructuredTime}"
                                     FontSize="30" />
                             </StackLayout>
                             <StackLayout
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Orientation="Horizontal">
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Grid.RowSpan="3"
+                                Parent="0,0,3,0"
+                                Orientation="Vertical"
+                                HorizontalOptions="EndAndExpand"
+                                VerticalOptions="Center">
                                 <Label
-                                    x:Name="MinTemperature"
+                                    x:Name="Temperature"
                                     VerticalOptions="Center"
-                                    Text="{Binding Path=LowTemperature, StringFormat='Low:{0:0}'}"
-                                    FontSize="Medium" />
-                                <Label
-                                    x:Name="MaxTemperature"
-                                    VerticalOptions="Center"
-                                    Text="{Binding Path=HighTemperature, StringFormat='High:{0:0}'}"
-                                    FontSize="Medium" />
+                                    TextColor="White"
+                                    FontAttributes="Bold"
+                                    Text="{Binding HighLowFormattedText}"
+                                    FontSize="25" />
                             </StackLayout>
                             <StackLayout
                                 Grid.Row="2"
@@ -103,6 +175,7 @@
                                     <Label
                                         x:Name="PrecipitationPercentage"
                                         VerticalOptions="Center"
+                                        TextColor="White"
                                         Text="{Binding Path=PrecipitationString}"
                                         Margin="0,0,5,0"
                                         FontSize="Medium" />
@@ -111,23 +184,26 @@
                                     <Label
                                         x:Name="CloudCoverPercentage"
                                         VerticalOptions="Center"
+                                        TextColor="White"
                                         Text="{Binding Path=CloudCoverString}"
                                         Margin="0,0,5,0"
                                         FontSize="Medium" />
-                                    <Image
+                                    <!--                                <Image
                                         Source="filter_uv.png" />
                                     <Label
                                         x:Name="UvIndex"
                                         VerticalOptions="Center"
                                         Margin="0,0,5,0"
+                                        TextColor="White"
                                         Text="{Binding Path=UVIndex}"
-                                        FontSize="Medium" />
+                                        FontSize="Medium" />-->
                                     <Image
                                         Source="cloudy.png" />
                                     <Label
                                         x:Name="Wind"
                                         VerticalOptions="Center"
                                         Margin="0,0,5,0"
+                                        TextColor="White"
                                         Text="{Binding Path=WindSpeed, StringFormat='{0:0} m/s'}"
                                         FontSize="Medium" />
                                 </StackLayout>

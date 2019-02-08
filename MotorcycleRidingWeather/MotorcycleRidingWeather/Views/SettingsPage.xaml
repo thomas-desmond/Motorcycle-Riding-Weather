@@ -23,6 +23,7 @@
                     Margin="5,0,0,0"
                     HorizontalOptions="Start"
                     VerticalOptions="Center"
+                    BackgroundColor="Transparent"                   
                     Command="{Binding NavigateBack}" />
                 <Label
                     Grid.Column="1"
@@ -42,8 +43,8 @@
                             HorizontalTextAlignment="Center"
                             Keyboard="Default"
                             Label="Location"
-                            Placeholder="Please enter zip code or city"
-                            Text="{Binding LocationText}" />
+                            Placeholder="Zip Code Only"
+                            Text="{Binding UserPreferences.LocationZipCode}" />
                         <ViewCell>
                             <StackLayout
                                 Orientation="Horizontal"
@@ -67,7 +68,7 @@
                             Label="Min Riding Temp"
                             Text="{Binding UserPreferences.MinRidingTemp}" />
                     </TableSection>
-                    <TableSection
+                    <!--<TableSection
                         Title="Rain Wind and UV Index">
                         <ViewCell>
                             <StackLayout
@@ -128,7 +129,7 @@
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
-                    </TableSection>
+                    </TableSection>-->
                 </TableRoot>
             </TableView>
             <Button

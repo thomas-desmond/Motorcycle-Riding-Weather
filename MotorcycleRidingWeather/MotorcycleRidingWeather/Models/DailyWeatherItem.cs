@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Runtime.Serialization;
 using DarkSkyApi;
 using MotorcycleRidingWeather.Constants;
+using MotorcycleRidingWeather.Services;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 using Prism.Mvvm;
@@ -18,19 +19,8 @@ namespace MotorcycleRidingWeather.Models
         {
             get 
             {
-                var maxTemp = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MAX_TEMP, 90);
-                var minTemp = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MIN_TEMP, 40);
-                var maxPrecipPercent = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MAX_PRECIP_PERCENT, 10);
-                var maxUvIndex = AppSettings.GetValueOrDefault(AppSettingKeys.USER_MAX_UV_INDEX, 10);
-
-                if (HighTemperature > maxTemp
-                    || LowTemperature < minTemp
-                    || (PrecipitationProbability * 100) > maxPrecipPercent
-                    || UVIndex > maxUvIndex)
-                {
-                    return false;
-                }
-                return true;
+                return HighTemperature <= SessionData.CurrentUserPreferences.MaxRidingTemp
+                        && LowTemperature >= SessionData.CurrentUserPreferences.MinRidingTemp;
             }
         }
 
@@ -48,10 +38,10 @@ namespace MotorcycleRidingWeather.Models
             {
                 if (IsGoodRidingDay)
                 {
-                    return Color.FromHex("8A00CC00");
+                    return Color.FromHex("#607d8b");
                 }
 
-                return Color.FromHex("8AFF7F7F");
+                return Color.FromHex("#37474f");
             }
         }
 
@@ -565,6 +555,14 @@ namespace MotorcycleRidingWeather.Models
             set
             {
                 uvIndexTime = value.ToUnixTime();
+            }
+        }
+
+        public string HighLowFormattedText
+        {
+            get
+            {
+                return $"{(int)HighTemperature}/{(int)LowTemperature} °F";
             }
         }
     }

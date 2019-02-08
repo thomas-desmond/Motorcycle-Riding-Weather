@@ -31,6 +31,13 @@ namespace MotorcycleRidingWeather.ViewModels
             set { SetProperty(ref _weatherDisplayInformation, value); }
         }
 
+        private DailyWeatherItem _todayWeather;
+        public DailyWeatherItem TodayWeather
+        {
+            get { return _todayWeather; }
+            set { SetProperty(ref _todayWeather, value); }
+        }
+
         private bool _isRefreshActive;
         public bool IsRefreshActive
         {
@@ -61,10 +68,10 @@ namespace MotorcycleRidingWeather.ViewModels
                 || WeatherDisplayInformation.Count <= 0
                 || Settings.UserChangedLocation == true)
             {
-                var zipCode = AppSettings.GetValueOrDefault(AppSettingKeys.USER_LOCATION, "92027");
+                var zipCode = SessionData.CurrentUserPreferences.LocationZipCode;
                 if (string.IsNullOrWhiteSpace(zipCode))
                 {
-                    zipCode = "92027";
+                    zipCode = "Set A Location";
                 }
                 Title = zipCode;
                 IsRefreshActive = true;
@@ -76,7 +83,9 @@ namespace MotorcycleRidingWeather.ViewModels
             {
                 WeatherDisplayInformation = 
                     new ObservableCollection<DailyWeatherItem>(_sessionData.SessionDailyWeatherData);
+                WeatherDisplayInformation.RemoveAt(0);
             }
+            TodayWeather = _sessionData.SessionDailyWeatherData[0];
         }
     }
 }
