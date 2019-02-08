@@ -120,6 +120,10 @@
     <AndroidResource Include="Resources\drawable\windy.png" />
     <AndroidResource Include="Resources\drawable\cloudy.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\bike.png" />
+    <AndroidResource Include="Resources\drawable\umbrella32.png" />
+    <AndroidResource Include="Resources\drawable\cloud32.png" />
+    <AndroidResource Include="Resources\drawable\wind32.png" />
+    <AndroidResource Include="Resources\drawable\wind.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

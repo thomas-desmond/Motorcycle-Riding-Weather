@@ -41,7 +41,7 @@ namespace MotorcycleRidingWeather.Models
                     return Color.FromHex("#607d8b");
                 }
 
-                return Color.FromHex("#37474f");
+                return Color.FromHex("#607d8b");
             }
         }
 
@@ -163,8 +163,15 @@ namespace MotorcycleRidingWeather.Models
         {
             get
             {
-                var monthAsString = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Time.Month);
-                return $"{Time.DayOfWeek} {monthAsString.Substring(0, 3)} {Time.Day}";
+                return $"{Time.DayOfWeek}";
+            }
+        }
+
+        public string CurrentDayLabelText
+        {
+            get
+            {
+                return $"{Time.DayOfWeek} Weather"; 
             }
         }
 

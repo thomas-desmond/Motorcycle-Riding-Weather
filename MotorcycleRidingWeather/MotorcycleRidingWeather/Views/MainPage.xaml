@@ -67,6 +67,8 @@
                         Height="*" />
                     <RowDefinition
                         Height="Auto" />
+                    <RowDefinition
+                        Height="Auto" />
                 </Grid.RowDefinitions>
                 <Label
                     Grid.Row="0"
@@ -74,8 +76,8 @@
                     x:Name="CurrentDate"
                     TextColor="White"
                     FontSize="Large"
-                    Margin="3,0,0,0"
-                    Text="Todays Weather" />
+                    Margin="5,0,0,0"
+                    Text="{Binding TodayWeather.CurrentDayLabelText}" />
                 <Label
                     Grid.Row="1"
                     Grid.Column="0"
@@ -87,16 +89,63 @@
                     FontSize="65"
                     Text="{Binding TodayWeather.HighLowFormattedText}" />
                 <StackLayout
+                    Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Spacing="30">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Image
+                            Source="umbrella32.png" />
+                        <Label
+                            Text="{Binding TodayWeather.PrecipitationString}" />
+                    </StackLayout>
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Image
+                            Source="cloud32.png" />
+                        <Label
+                            Text="{Binding TodayWeather.CloudCoverString}" />
+                    </StackLayout>
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Image
+                            Source="wind32.png" />
+                        <Label
+                            Text="{Binding Path=TodayWeather.WindSpeed, StringFormat='{0:0} m/s'}" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout
+                    IsVisible="{Binding TodayWeather.IsGoodRidingDay}"
                     Orientation="Horizontal"
                     HorizontalOptions="Center"
                     VerticalOptions="End"
-                    Grid.Row="2">
+                    Grid.Row="3">
                     <Image
                         Source="bike.png" />
                     <Label
                         TextColor="White"
                         Font="Large"
+                        VerticalOptions="Center"
                         Text="Today is a good day to ride!" />
+                </StackLayout>
+                <StackLayout
+                    IsVisible="{Binding TodayWeather.IsBadRidingDay}"
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Grid.Row="3">
+                    <Image
+                        Source="car.png" />
+                    <Label
+                        TextColor="White"
+                        Font="Large"
+                        VerticalOptions="Center"
+                        Text="Looks like a car driving day :(" />
                 </StackLayout>
             </Grid>
         </Grid>
@@ -105,7 +154,7 @@
                 <RowDefinition
                     Height="*" />
                 <RowDefinition
-                    Height="Auto" />
+                    Height="100" />
             </Grid.RowDefinitions>
             <ListView
                 Grid.Row="0"
@@ -118,7 +167,7 @@
                         <ViewCell>
                             <Grid
                                 RowSpacing="1"
-                                Padding="0,5"
+                                Padding="5,5"
                                 BackgroundColor="{Binding BackgroundColorBasedOnWeather}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition
@@ -203,17 +252,8 @@
                                             Text="{Binding Path=CloudCoverString}"
                                             Margin="0,0,5,0"
                                             FontSize="Medium" />
-                                        <!--                                <Image
-                                        Source="filter_uv.png" />
-                                    <Label
-                                        x:Name="UvIndex"
-                                        VerticalOptions="Center"
-                                        Margin="0,0,5,0"
-                                        TextColor="White"
-                                        Text="{Binding Path=UVIndex}"
-                                        FontSize="Medium" />-->
                                         <Image
-                                            Source="cloudy.png" />
+                                            Source="wind.png" />
                                         <Label
                                             x:Name="Wind"
                                             VerticalOptions="Center"
@@ -229,7 +269,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <local:AdMobView
-                AdUnitId="ca-app-pub-3940256099942544/6300978111"
+                AdUnitId="{Binding AddUnitId}"
                 Grid.Row="1" />
         </Grid>
     </StackLayout>

@@ -38,6 +38,14 @@ namespace MotorcycleRidingWeather.ViewModels
             set { SetProperty(ref _todayWeather, value); }
         }
 
+        public string AddUnitId
+        {
+            get
+            {
+                return Keys.ADMOB_AD_ID;
+            }
+        }
+
         private bool _isRefreshActive;
         public bool IsRefreshActive
         {
@@ -76,8 +84,6 @@ namespace MotorcycleRidingWeather.ViewModels
                 Title = zipCode;
                 IsRefreshActive = true;
                 WeatherDisplayInformation = await _sessionData.GetWeatherByZipCode(zipCode);
-                WeatherDisplayInformation.RemoveAt(0);
-
                 IsRefreshActive = false;
                 Settings.UserChangedLocation = false;
             }
@@ -85,9 +91,9 @@ namespace MotorcycleRidingWeather.ViewModels
             {
                 WeatherDisplayInformation =
                     new ObservableCollection<DailyWeatherItem>(_sessionData.SessionDailyWeatherData);
-                WeatherDisplayInformation.RemoveAt(0);
             }
             TodayWeather = _sessionData.SessionDailyWeatherData[0];
+            WeatherDisplayInformation.RemoveAt(0);
         }
     }
 }

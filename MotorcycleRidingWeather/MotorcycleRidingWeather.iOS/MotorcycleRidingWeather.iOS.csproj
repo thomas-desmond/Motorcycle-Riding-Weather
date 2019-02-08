@@ -137,6 +137,10 @@
     <BundleResource Include="Resources\filter_uv.png" />
     <BundleResource Include="Resources\windy.png" />
     <BundleResource Include="Resources\cloudy.png" />
+    <BundleResource Include="Resources\umbrella32.png" />
+    <BundleResource Include="Resources\cloud32.png" />
+    <BundleResource Include="Resources\wind32.png" />
+    <BundleResource Include="Resources\wind.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
