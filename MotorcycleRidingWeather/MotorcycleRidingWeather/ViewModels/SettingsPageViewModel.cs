@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using MotorcycleRidingWeather.Constants;
 using MotorcycleRidingWeather.Models;
 using MotorcycleRidingWeather.Services;
@@ -7,6 +8,7 @@ using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 using Prism.Commands;
 using Prism.Navigation;
+using Prism.Services;
 
 namespace MotorcycleRidingWeather.ViewModels
 {
@@ -14,8 +16,9 @@ namespace MotorcycleRidingWeather.ViewModels
     {
         private static ISettings AppSettings => CrossSettings.Current;
 
-        INavigationService _navigationService;
-        ISessionData _sessionData;
+        readonly INavigationService _navigationService;
+        readonly ISessionData _sessionData;
+        readonly IPageDialogService _pageDialogService;
 
         public DelegateCommand NavigateBack { get; set; }
         public DelegateCommand GetRidingWeatherCommand { get; set; }
@@ -29,7 +32,8 @@ namespace MotorcycleRidingWeather.ViewModels
         }
 
         public SettingsPageViewModel(INavigationService navigationService,
-                                     ISessionData sessionData)
+                                     ISessionData sessionData,
+                                    IPageDialogService pageDialogService)
             : base(navigationService)
         {
             Title = "Settings";
@@ -41,9 +45,10 @@ namespace MotorcycleRidingWeather.ViewModels
 
             _navigationService = navigationService;
             _sessionData = sessionData;
+            _pageDialogService = pageDialogService;
         }
 
-        private void SendFeedback()
+        void SendFeedback()
         {
             var emailMessenger = CrossMessaging.Current.EmailMessenger;
 
@@ -57,12 +62,17 @@ namespace MotorcycleRidingWeather.ViewModels
                                  "such as issues, feature requests, or anything else\n\n" +
                                  "Thanks!");
         }
-        private void OnGetRidingWeather()
+        async void OnGetRidingWeather()
         {
+            if (UserPreferences.LocationZipCode.All(char.IsDigit) == false
+                || UserPreferences.LocationZipCode.Length > 5)
+            {
+                await _pageDialogService.DisplayAlertAsync("Invalid Zip Code", "Currently you can only search locations by zip code, please ensure zip code is entered correctly. Ability to search by city coming soon", "Close");
+            }
             Settings.UserChangedLocation = true;
         }
 
-        private void OnNavigateBack()
+        void OnNavigateBack()
         {
             _sessionData.SaveUserData(UserPreferences);
             _navigationService.GoBackAsync();
@@ -73,7 +83,7 @@ namespace MotorcycleRidingWeather.ViewModels
             InitalizePageWithUserSettings();
         }
 
-        private void InitalizePageWithUserSettings()
+        void InitalizePageWithUserSettings()
         {
             UserPreferences = _sessionData.GetCurrentUserPreferences();
         }
