@@ -57,13 +57,13 @@ namespace MotorcycleRidingWeather.ViewModels
             _navigationService = navigationService;
         }
 
-		private async void OnNavigateToSettingsPage()
+        private async void OnNavigateToSettingsPage()
         {
             await _navigationService.NavigateAsync(PageNames.SettingsPageName);
         }
 
         public override async void OnNavigatingTo(NavigationParameters parameters)
-		{
+        {
             if (WeatherDisplayInformation == null
                 || WeatherDisplayInformation.Count <= 0
                 || Settings.UserChangedLocation == true)
@@ -76,12 +76,14 @@ namespace MotorcycleRidingWeather.ViewModels
                 Title = zipCode;
                 IsRefreshActive = true;
                 WeatherDisplayInformation = await _sessionData.GetWeatherByZipCode(zipCode);
+                WeatherDisplayInformation.RemoveAt(0);
+
                 IsRefreshActive = false;
                 Settings.UserChangedLocation = false;
             }
             else
             {
-                WeatherDisplayInformation = 
+                WeatherDisplayInformation =
                     new ObservableCollection<DailyWeatherItem>(_sessionData.SessionDailyWeatherData);
                 WeatherDisplayInformation.RemoveAt(0);
             }

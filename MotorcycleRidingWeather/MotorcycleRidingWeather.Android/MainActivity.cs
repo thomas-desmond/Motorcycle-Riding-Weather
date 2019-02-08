@@ -19,7 +19,7 @@ namespace MotorcycleRidingWeather.Droid
             base.OnCreate(bundle);
 
             MobileAds.Initialize(ApplicationContext, Keys.ADMOD_APP_ID);
-            
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
         }
