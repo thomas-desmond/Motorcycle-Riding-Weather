@@ -1,28 +1,22 @@
 ﻿using Prism.Navigation;
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 using MotorcycleRidingWeather.Models;
 using System.Collections.ObjectModel;
 using Prism.Commands;
 using MotorcycleRidingWeather.Constants;
-using DarkSkyApi;
-using DarkSkyApi.Models;
-using Xamarin.Forms;
 using Plugin.Settings.Abstractions;
 using Plugin.Settings;
 using MotorcycleRidingWeather.Services;
+using Prism.Services;
 
 namespace MotorcycleRidingWeather.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        private static ISettings AppSettings => CrossSettings.Current;
-
         public DelegateCommand NavigateToSettingsPage { get; set; }
 
         INavigationService _navigationService;
         ISessionData _sessionData;
+        IPageDialogService _pageDialogService;
 
         private ObservableCollection<DailyWeatherItem> _weatherDisplayInformation;
         public ObservableCollection<DailyWeatherItem> WeatherDisplayInformation
@@ -54,15 +48,15 @@ namespace MotorcycleRidingWeather.ViewModels
         }
 
         public MainPageViewModel(INavigationService navigationService,
-                                 ISessionData sessionData)
+                                 ISessionData sessionData,
+                                IPageDialogService pageDialogService)
             : base(navigationService)
         {
-            _sessionData = sessionData;
-
-            Title = "San Marcos";
             NavigateToSettingsPage = new DelegateCommand(OnNavigateToSettingsPage);
 
+            _sessionData = sessionData;
             _navigationService = navigationService;
+            _pageDialogService = pageDialogService;
         }
 
         private async void OnNavigateToSettingsPage()
@@ -72,33 +66,34 @@ namespace MotorcycleRidingWeather.ViewModels
 
         public override async void OnNavigatingTo(NavigationParameters parameters)
         {
-            if (WeatherDisplayInformation == null
-                || WeatherDisplayInformation.Count <= 0
-                || Settings.UserChangedLocation == true)
+            var zipCode = SessionData.CurrentUserPreferences.LocationZipCode;
+            if (string.IsNullOrWhiteSpace(zipCode))
             {
-                var zipCode = SessionData.CurrentUserPreferences.LocationZipCode;
-                if (string.IsNullOrWhiteSpace(zipCode))
-                {
-                    zipCode = "Set A Location";
-                }
-                Title = zipCode;
-                IsRefreshActive = true;
-                var weatherInfo = await _sessionData.GetWeatherByZipCode(zipCode);
-                WeatherDisplayInformation =
-                    new ObservableCollection<DailyWeatherItem>(weatherInfo);
-                IsRefreshActive = false;
-                Settings.UserChangedLocation = false;
-                TodayWeather = _sessionData.SessionDailyWeatherData[0];
-                WeatherDisplayInformation.RemoveAt(0);
-
+                zipCode = "Set A Location";
             }
-            else
+            Title = zipCode;
+            IsRefreshActive = true;
+            var weatherInfo = await _sessionData.GetWeatherByZipCode(zipCode);
+            WeatherDisplayInformation =
+                new ObservableCollection<DailyWeatherItem>(weatherInfo);
+            IsRefreshActive = false;
+            Settings.UserChangedLocation = false;
+            if (_sessionData.SessionDailyWeatherData.Count > 0)
             {
-                WeatherDisplayInformation =
-                    new ObservableCollection<DailyWeatherItem>(_sessionData.SessionDailyWeatherData);
                 TodayWeather = _sessionData.SessionDailyWeatherData[0];
                 WeatherDisplayInformation.RemoveAt(0);
+            }
+        }
 
+        public override async void OnAppearing()
+        {
+            base.OnAppearing();
+            if (string.IsNullOrWhiteSpace(SessionData.CurrentUserPreferences.LocationZipCode))
+            {
+                await _pageDialogService.DisplayAlertAsync("Set A Location",
+                                                          "It looks like this if your first time using the app or you do not have a location set, let's do that now",
+                                                           "OK");
+                await _navigationService.NavigateAsync(PageNames.SettingsPageName);
             }
         }
     }

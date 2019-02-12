@@ -45,15 +45,6 @@
                             Label="Location"
                             Placeholder="Zip Code Only"
                             Text="{Binding UserPreferences.LocationZipCode}" />
-                        <ViewCell>
-                            <StackLayout
-                                Orientation="Horizontal"
-                                HorizontalOptions="Center">
-                                <Button
-                                    Text="Get Riding Weather"
-                                    Command="{Binding GetRidingWeatherCommand}" />
-                            </StackLayout>
-                        </ViewCell>
                     </TableSection>
                     <TableSection
                         Title="Temperatures">

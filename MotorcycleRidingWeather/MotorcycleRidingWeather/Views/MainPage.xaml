@@ -64,7 +64,7 @@
                     <RowDefinition
                         Height="Auto" />
                     <RowDefinition
-                        Height="*" />
+                        Height="Auto" />
                     <RowDefinition
                         Height="Auto" />
                     <RowDefinition
@@ -154,7 +154,7 @@
                 <RowDefinition
                     Height="*" />
                 <RowDefinition
-                    Height="100" />
+                    Height="0" />
             </Grid.RowDefinitions>
             <ListView
                 Grid.Row="0"
@@ -268,9 +268,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <local:AdMobView
+ <!--           <local:AdMobView
                 AdUnitId="{Binding AddUnitId}"
-                Grid.Row="1" />
+                Grid.Row="1" />-->
         </Grid>
         <StackLayout.Triggers>
             <DataTrigger
