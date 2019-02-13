@@ -149,12 +149,12 @@
                 </StackLayout>
             </Grid>
         </Grid>
-        <Grid>
+        <Grid RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition
                     Height="*" />
                 <RowDefinition
-                    Height="0" />
+                    Height="100" />
             </Grid.RowDefinitions>
             <ListView
                 Grid.Row="0"
@@ -166,7 +166,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid
-                                RowSpacing="1"
+                                RowSpacing="0"                              
                                 Padding="5,5"
                                 BackgroundColor="{Binding BackgroundColorBasedOnWeather}">
                                 <Grid.RowDefinitions>
@@ -268,9 +268,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
- <!--           <local:AdMobView
-                AdUnitId="{Binding AddUnitId}"
-                Grid.Row="1" />-->
+            <local:AdMobView
+                AdUnitId="ca-app-pub-6670943348936598/2069009816"
+                Grid.Row="1" />
         </Grid>
         <StackLayout.Triggers>
             <DataTrigger
