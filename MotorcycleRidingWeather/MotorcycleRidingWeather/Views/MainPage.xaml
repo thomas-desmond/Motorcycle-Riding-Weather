@@ -5,13 +5,24 @@
     xmlns:local="clr-namespace:MotorcycleRidingWeather"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:controls="clr-namespace:MotorcycleRidingWeather.Controls;assembly=MotorcycleRidingWeather"
+    xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
     ios:Page.UseSafeArea="true"
-    BackgroundColor="#90a4ae"
     x:Class="MotorcycleRidingWeather.Views.MainPage">
+    <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient
+            Rotation="90">
+            <xfg:GradientStep
+                StepColor="#66ccff"
+                StepPercentage="0" />
+            <xfg:GradientStep
+                StepColor="#6699ff"
+                StepPercentage="1" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
     <StackLayout>
         <Grid
             RowSpacing="0"
-            BackgroundColor="#90a4ae">
+            BackgroundColor="Transparent">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition
                     Width="2*" />
@@ -59,7 +70,7 @@
                 Grid.Column="0"
                 Padding="0,3,0,0"
                 Grid.ColumnSpan="3"
-                BackgroundColor="#90a4ae">
+                BackgroundColor="Transparent">
                 <Grid.RowDefinitions>
                     <RowDefinition
                         Height="Auto" />
@@ -149,7 +160,8 @@
                 </StackLayout>
             </Grid>
         </Grid>
-        <Grid RowSpacing="0">
+        <Grid
+            RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition
                     Height="*" />
@@ -165,10 +177,22 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+                            <xfg:CellGloss.BackgroundGradient>
+                                <xfg:Gradient
+                                    Rotation="90"
+                                    x:Name="rotatingGradient">
+                                    <xfg:GradientStep
+                                        StepColor="#66ccff"
+                                        StepPercentage="0" />
+                                    <xfg:GradientStep
+                                        StepColor="#6699ff"
+                                        StepPercentage="1" />
+                                </xfg:Gradient>
+                            </xfg:CellGloss.BackgroundGradient>
                             <Grid
-                                RowSpacing="0"                              
+                                RowSpacing="0"
                                 Padding="5,5"
-                                BackgroundColor="{Binding BackgroundColorBasedOnWeather}">
+                                BackgroundColor="Transparent">
                                 <Grid.RowDefinitions>
                                     <RowDefinition
                                         Height="Auto" />

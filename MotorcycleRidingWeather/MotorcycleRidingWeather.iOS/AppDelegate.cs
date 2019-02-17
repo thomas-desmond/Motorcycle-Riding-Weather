@@ -21,6 +21,8 @@ namespace MotorcycleRidingWeather.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            XFGloss.iOS.Library.Init();
+
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App(new iOSInitializer()));
 
