@@ -20,7 +20,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
     <JavaMaximumHeapSize />
@@ -117,7 +116,6 @@
     <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\drawable\bike.png" />
     <AndroidResource Include="Resources\drawable\car.png" />
     <AndroidResource Include="Resources\drawable\umbrella.png" />
     <AndroidResource Include="Resources\drawable\cloud.png" />
@@ -129,6 +127,8 @@
     <AndroidResource Include="Resources\drawable\cloud32.png" />
     <AndroidResource Include="Resources\drawable\wind32.png" />
     <AndroidResource Include="Resources\drawable\wind.png" />
+    <AndroidResource Include="Resources\drawable\daypartialcloud.png" />
+    <AndroidResource Include="Resources\drawable\bike.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

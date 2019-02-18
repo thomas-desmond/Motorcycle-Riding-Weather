@@ -131,7 +131,6 @@
     <BundleResource Include="Resources\Default@2x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <BundleResource Include="Resources\car.png" />
-    <BundleResource Include="Resources\bike.png" />
     <BundleResource Include="Resources\umbrella.png" />
     <BundleResource Include="Resources\cloud.png" />
     <BundleResource Include="Resources\filter_uv.png" />
@@ -141,6 +140,8 @@
     <BundleResource Include="Resources\cloud32.png" />
     <BundleResource Include="Resources\wind32.png" />
     <BundleResource Include="Resources\wind.png" />
+    <BundleResource Include="Resources\daypartialcloud.png" />
+    <BundleResource Include="Resources\bike.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

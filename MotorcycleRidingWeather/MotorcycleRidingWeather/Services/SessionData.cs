@@ -88,6 +88,7 @@ namespace MotorcycleRidingWeather.Services
                     CloudCover = day.CloudCover,
                     UVIndex = day.UVIndex,
                     WindGust = day.WindGust,
+                    Icon = day.Icon,
                 };
 
                 dailyInfoToDisplay.Add(dayInfo);

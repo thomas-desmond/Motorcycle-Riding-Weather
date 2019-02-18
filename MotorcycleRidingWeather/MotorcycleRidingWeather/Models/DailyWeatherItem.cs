@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Runtime.Serialization;
 using DarkSkyApi;
@@ -11,8 +12,26 @@ using Xamarin.Forms;
 
 namespace MotorcycleRidingWeather.Models
 {
+
+
     public class DailyWeatherItem : BindableBase
     {
+        readonly Dictionary<string, string> WeatherIconDictionary = new Dictionary<string, string>
+        {
+            {"clear-day", "daypartialcloud.png"},
+            {"clear-night", "daypartialcloud.png"},
+            {"rain", "daypartialcloud.png"},
+            {"snow", "daypartialcloud.png"},
+            {"sleet", "daypartialcloud.png"},
+            {"wind", "daypartialcloud.png"},
+            {"fog", "daypartialcloud.png"},
+            {"cloudy", "daypartialcloud.png"},
+            {"partly-cloudy-day", "daypartialcloud.png"},
+            {"partly-cloudy-night", "daypartialcloud.png"},
+        };
+
+        //clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
+
         private static ISettings AppSettings => CrossSettings.Current;
 
         public bool IsGoodRidingDay
@@ -30,6 +49,14 @@ namespace MotorcycleRidingWeather.Models
             get
             {
                 return !IsGoodRidingDay;
+            }
+        }
+
+        public string WeatherIcon
+        {
+            get
+            {
+                return WeatherIconDictionary[Icon];
             }
         }
 
