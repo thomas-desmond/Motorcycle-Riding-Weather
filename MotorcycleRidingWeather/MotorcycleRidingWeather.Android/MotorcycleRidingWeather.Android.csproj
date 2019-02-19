@@ -129,6 +129,14 @@
     <AndroidResource Include="Resources\drawable\wind.png" />
     <AndroidResource Include="Resources\drawable\daypartialcloud.png" />
     <AndroidResource Include="Resources\drawable\bike.png" />
+    <AndroidResource Include="Resources\drawable\dayclear.png" />
+    <AndroidResource Include="Resources\drawable\nighthalfmoonclear.png" />
+    <AndroidResource Include="Resources\drawable\rain.png" />
+    <AndroidResource Include="Resources\drawable\snow.png" />
+    <AndroidResource Include="Resources\drawable\sleet.png" />
+    <AndroidResource Include="Resources\drawable\windIcon.png" />
+    <AndroidResource Include="Resources\drawable\fog.png" />
+    <AndroidResource Include="Resources\drawable\nightfullmoonpartialcloud.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

@@ -195,7 +195,7 @@
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition
-                                        Width="*" />
+                                        Width="Auto" />
                                     <ColumnDefinition
                                         Width="2*" />
                                     <ColumnDefinition
@@ -207,6 +207,7 @@
                                     Grid.Column="0"
                                     Grid.Row="0"
                                     Grid.RowSpan="3"
+                                    Padding="0,0,5,0"
                                     VerticalOptions="Center">
                                     <Image
                                         Source="bike.png"
@@ -225,7 +226,7 @@
                                         TextColor="White"
                                         FontAttributes="Bold"
                                         Text="{Binding StructuredTime}"
-                                        FontSize="24" />
+                                        FontSize="27" />
                                 </StackLayout>
                                 <StackLayout
                                     Grid.Row="0"

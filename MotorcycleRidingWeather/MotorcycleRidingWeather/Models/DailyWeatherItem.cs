@@ -18,16 +18,16 @@ namespace MotorcycleRidingWeather.Models
     {
         readonly Dictionary<string, string> WeatherIconDictionary = new Dictionary<string, string>
         {
-            {"clear-day", "daypartialcloud.png"},
-            {"clear-night", "daypartialcloud.png"},
-            {"rain", "daypartialcloud.png"},
-            {"snow", "daypartialcloud.png"},
-            {"sleet", "daypartialcloud.png"},
-            {"wind", "daypartialcloud.png"},
-            {"fog", "daypartialcloud.png"},
+            {"clear-day", "dayclear.png"},
+            {"clear-night", "nighthalfmoonclear.png"},
+            {"rain", "rain.png"},
+            {"snow", "snow.png"},
+            {"sleet", "sleet.png"},
+            {"wind", "windIcon.png"},
+            {"fog", "fog.png"},
             {"cloudy", "daypartialcloud.png"},
             {"partly-cloudy-day", "daypartialcloud.png"},
-            {"partly-cloudy-night", "daypartialcloud.png"},
+            {"partly-cloudy-night", "nightfullmoonpartialcloud.png"},
         };
 
         //clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
