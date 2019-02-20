@@ -122,7 +122,6 @@
     <AndroidResource Include="Resources\drawable\filter_uv.png" />
     <AndroidResource Include="Resources\drawable\windy.png" />
     <AndroidResource Include="Resources\drawable\cloudy.png" />
-    <AndroidResource Include="Resources\mipmap-xxxhdpi\bike.png" />
     <AndroidResource Include="Resources\drawable\umbrella32.png" />
     <AndroidResource Include="Resources\drawable\cloud32.png" />
     <AndroidResource Include="Resources\drawable\wind32.png" />
@@ -156,7 +155,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PlatformSpecific\" />
-    <Folder Include="Resources\New Folder\" />
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

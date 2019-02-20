@@ -6094,10 +6094,7 @@ namespace MotorcycleRidingWeather.Droid
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int bike = 2130903040;
-			
-			// aapt resource value: 0x7f030001
-			public const int ic_launcher = 2130903041;
+			public const int ic_launcher = 2130903040;
 			
 			static Mipmap()
 			{
