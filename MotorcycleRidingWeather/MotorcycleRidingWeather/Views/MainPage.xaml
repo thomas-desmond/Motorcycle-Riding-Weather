@@ -90,7 +90,7 @@
                     HorizontalOptions="Center"
                     TextColor="White"
                     FontAttributes="Bold"
-                    FontSize="Large"
+                    FontSize="22"
                     Margin="5,0,0,0"
                     Text="{Binding TodayWeather.CurrentDayLabelText}" />
                 <Label
@@ -127,6 +127,7 @@
                 IsVisible="{Binding TodayWeather.IsGoodRidingDay}"
                 Orientation="Horizontal"
                 HorizontalOptions="Center"
+                Padding="0,3,0,0"
                 VerticalOptions="End"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
@@ -143,6 +144,7 @@
                 IsVisible="{Binding TodayWeather.IsBadRidingDay}"
                 Orientation="Horizontal"
                 HorizontalOptions="Center"
+                Padding="0,3,0,0"
                 VerticalOptions="End"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
@@ -168,7 +170,7 @@
                 Grid.Row="0"
                 ItemsSource="{Binding WeatherDisplayInformation}"
                 HasUnevenRows="true"
-                SeparatorColor="Gray"
+                SeparatorVisibility="None"
                 IsRefreshing="{Binding IsRefreshActive}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -192,6 +194,8 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition
                                         Height="Auto" />
+                                    <RowDefinition
+                                        Height="2" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition
@@ -232,7 +236,7 @@
                                     Grid.Row="0"
                                     Grid.Column="2"
                                     Orientation="Vertical"
-                                    Padding="0,0,10,0"
+                                    Padding="0,0,10,3"
                                     Grid.ColumnSpan="2">
                                     <StackLayout
                                         Orientation="Horizontal">
@@ -288,6 +292,12 @@
                                         Text="{Binding HighLowFormattedText}"
                                         FontSize="25" />
                                 </StackLayout>
+                                <BoxView
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Margin="0,0,0,0"
+                                    Grid.ColumnSpan="4"
+                                    Color="White" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
