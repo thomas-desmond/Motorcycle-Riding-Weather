@@ -19,7 +19,9 @@
                 StepPercentage="1" />
         </xfg:Gradient>
     </xfg:ContentPageGloss.BackgroundGradient>
-    <StackLayout>
+    <StackLayout
+        x:Name="FullPageStackLayout"
+        IsVisible="{Binding ShouldShowPage}">
         <Grid
             x:Name="HeaderGrid">
             <Grid.ColumnDefinitions>
@@ -40,7 +42,7 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 FontAttributes="Bold"
-                FontSize="20"
+                FontSize="24"
                 TextColor="White"
                 Text="{Binding Title}" />
             <Button

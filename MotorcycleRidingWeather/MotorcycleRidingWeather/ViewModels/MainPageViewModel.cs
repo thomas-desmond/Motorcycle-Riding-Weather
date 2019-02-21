@@ -32,6 +32,13 @@ namespace MotorcycleRidingWeather.ViewModels
             set { SetProperty(ref _todayWeather, value); }
         }
 
+        private bool _shouldShowPage = false;
+        public bool ShouldShowPage
+        {
+            get { return _shouldShowPage; }
+            set { SetProperty(ref _shouldShowPage, value); }
+        }
+
         public string AddUnitId
         {
             get
@@ -77,12 +84,13 @@ namespace MotorcycleRidingWeather.ViewModels
             WeatherDisplayInformation =
                 new ObservableCollection<DailyWeatherItem>(weatherInfo);
             IsRefreshActive = false;
-            Settings.UserChangedLocation = false;
             if (_sessionData.SessionDailyWeatherData.Count > 0)
             {
                 TodayWeather = _sessionData.SessionDailyWeatherData[0];
                 WeatherDisplayInformation.RemoveAt(0);
             }
+            ShouldShowPage = true;
+
         }
 
         public override async void OnAppearing()
