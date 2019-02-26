@@ -17,6 +17,7 @@
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.7.0" />
     <PackageReference Include="Xamarin.Firebase.Ads" Version="60.1142.1" />
     <PackageReference Include="Ansuria.XFGloss" Version="1.1.3" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
   </ItemGroup>
 
   <ItemGroup>

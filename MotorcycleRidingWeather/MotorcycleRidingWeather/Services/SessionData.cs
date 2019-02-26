@@ -66,8 +66,10 @@ namespace MotorcycleRidingWeather.Services
 
             DateTimeOffset? currentDay = null;
             var dailyInfoExcludingIgnoreTimes = new DailyWeatherItem();
+            double rainAccumlationHour = 0;
             foreach(var hour in allForecastData.Hourly.Hours)
             {
+                
                 if (currentDay == null || hour.Time.Day != currentDay.Value.Day)
                 {
                     currentDay = hour.Time;
@@ -89,11 +91,32 @@ namespace MotorcycleRidingWeather.Services
                     UVIndex = day.UVIndex,
                     WindGust = day.WindGust,
                     Icon = day.Icon,
+                    RainAccummulationCalculatedByDaily = day.PrecipitationIntensity * 24,
+                    RainAccummulationCalculatedByHourly = GetHourlyRain(allForecastData, day.Time.Day),
                 };
 
+
+                if (dayInfo.RainAccummulationCalculatedByHourly < .01)
+                {
+                    dayInfo.PrecipitationProbability = 0;
+                    rainAccumlationHour = 0;
+                }
                 dailyInfoToDisplay.Add(dayInfo);
             }
             return dailyInfoToDisplay;
+        }
+
+        private double GetHourlyRain(Forecast allForecastData, int day)
+        {
+            double rainAccumulation = 0;
+            foreach (var hour in allForecastData.Hourly.Hours)
+            {
+                if (hour.Time.Day == day)
+                {
+                    rainAccumulation += hour.PrecipitationIntensity;
+                }
+            }
+            return rainAccumulation;
         }
 
         public UserPreferences GetCurrentUserPreferences()

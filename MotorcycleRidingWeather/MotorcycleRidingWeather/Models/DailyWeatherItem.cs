@@ -73,6 +73,10 @@ namespace MotorcycleRidingWeather.Models
             }
         }
 
+        public double RainAccummulationCalculatedByDaily { get; set; }
+        public double RainAccummulationCalculatedByHourly { get; set; }
+
+
         public string PrecipitationString
         {
             get

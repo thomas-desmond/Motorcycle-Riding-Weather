@@ -36,7 +36,19 @@ namespace MotorcycleRidingWeather.ViewModels
         public bool ShouldShowPage
         {
             get { return _shouldShowPage; }
-            set { SetProperty(ref _shouldShowPage, value); }
+            set
+            {
+                SetProperty(ref _shouldShowPage, value);
+                RaisePropertyChanged(nameof(ShowActivityIndicator));
+            }
+        }
+
+        public bool ShowActivityIndicator
+        {
+            get
+            {
+                return !ShouldShowPage;
+            }
         }
 
         public string AddUnitId
@@ -90,7 +102,6 @@ namespace MotorcycleRidingWeather.ViewModels
                 WeatherDisplayInformation.RemoveAt(0);
             }
             ShouldShowPage = true;
-
         }
 
         public override async void OnAppearing()

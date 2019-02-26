@@ -19,6 +19,7 @@ namespace MotorcycleRidingWeather.Droid
 
             base.OnCreate(bundle);
 
+            Rg.Plugins.Popup.Popup.Init(this, bundle);
             MobileAds.Initialize(ApplicationContext, Keys.ADMOD_APP_ID);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
