@@ -128,8 +128,10 @@
                         IsVisible="false"
                         Text="More Details"
                         BackgroundColor="White"
+                        Command="{Binding OpenWeatherDetailPopup}"
                         TextColor="Black"
                         BorderWidth="2"
+                        FontSize="Medium"
                         HeightRequest="20"
                         BorderColor="Transparent"
                         BorderRadius="8" />

@@ -7,16 +7,24 @@ using Plugin.Settings.Abstractions;
 using Plugin.Settings;
 using MotorcycleRidingWeather.Services;
 using Prism.Services;
+using System;
+using MotorcycleRidingWeather.Views;
+using Rg.Plugins.Popup.Services;
 
 namespace MotorcycleRidingWeather.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
         public DelegateCommand NavigateToSettingsPage { get; set; }
+        public DelegateCommand OpenWeatherDetailPopup { get; set; }
+
 
         INavigationService _navigationService;
         ISessionData _sessionData;
         IPageDialogService _pageDialogService;
+
+        private WeatherDetailPopup _weatherDetailPopup;
+
 
         private ObservableCollection<DailyWeatherItem> _weatherDisplayInformation;
         public ObservableCollection<DailyWeatherItem> WeatherDisplayInformation
@@ -72,10 +80,18 @@ namespace MotorcycleRidingWeather.ViewModels
             : base(navigationService)
         {
             NavigateToSettingsPage = new DelegateCommand(OnNavigateToSettingsPage);
+            OpenWeatherDetailPopup = new DelegateCommand(OnOpenWeatherDetailPopup);
 
             _sessionData = sessionData;
             _navigationService = navigationService;
             _pageDialogService = pageDialogService;
+
+            _weatherDetailPopup = new WeatherDetailPopup();
+        }
+
+        private async void OnOpenWeatherDetailPopup()
+        {
+            await PopupNavigation.Instance.PushAsync(_weatherDetailPopup);
         }
 
         private async void OnNavigateToSettingsPage()
