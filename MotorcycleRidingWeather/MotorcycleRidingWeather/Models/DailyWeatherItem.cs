@@ -40,7 +40,8 @@ namespace MotorcycleRidingWeather.Models
             {
                 return HighTemperature <= SessionData.CurrentUserPreferences.MaxRidingTemp
                         && LowTemperature >= SessionData.CurrentUserPreferences.MinRidingTemp
-                        && PrecipitationProbability * 100 <= SessionData.CurrentUserPreferences.MaxRainPercentage;
+                        && PrecipitationProbability * 100 <= SessionData.CurrentUserPreferences.MaxRainPercentage
+                        && RainAccummulationCalculatedByHourly <= SessionData.CurrentUserPreferences.MaxRainAccumulation;
             }
         }
 

@@ -31,6 +31,25 @@ namespace MotorcycleRidingWeather.ViewModels
             set { SetProperty(ref _userPreferences, value); }
         }
 
+        private double _rainAccumulationSliderValue;
+        public double RainAccumulationSliderValue
+        {
+            get { return _rainAccumulationSliderValue; }
+            set
+            {
+                SetProperty(ref _rainAccumulationSliderValue, value);
+                CalculatedAccumulation = _rainAccumulationSliderValue * .1;
+
+            }
+        }
+
+        private double _calculatedAccumulation;
+        public double CalculatedAccumulation
+        {
+            get { return _calculatedAccumulation; }
+            set { SetProperty(ref _calculatedAccumulation, value); }
+        }
+
         public SettingsPageViewModel(INavigationService navigationService,
                                      ISessionData sessionData,
                                     IPageDialogService pageDialogService)

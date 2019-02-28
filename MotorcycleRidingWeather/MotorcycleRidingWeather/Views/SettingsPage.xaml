@@ -62,25 +62,87 @@
                     <TableSection
                         Title="Rain">
                         <ViewCell>
-                            <StackLayout
-                                Margin="5"
-                                Orientation="Horizontal"
-                                BackgroundColor="White"
-                                HorizontalOptions="FillAndExpand">
+                            <Grid
+                                Padding="0,6">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition
+                                        Height="Auto" />
+                                    <RowDefinition
+                                        Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition
+                                        Width="3*" />
+                                    <ColumnDefinition
+                                        Width="*" />
+                                </Grid.ColumnDefinitions>
                                 <Label
-                                    Text="Max Rain %"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    HorizontalOptions="Start"
+                                    Margin="10,0"
+                                    Text="Max Allowable Rain Percentage (%)"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalOptions="End"
+                                    Margin="10,0"
+                                    BindingContext="{x:Reference RainSlider}"
+                                    Text="{Binding Value, StringFormat='{0:F0}%'}"
                                     VerticalOptions="Center" />
                                 <Slider
+                                    Margin="10,0"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
                                     x:Name="RainSlider"
                                     Minimum="0"
                                     Maximum="100"
                                     Value="{Binding UserPreferences.MaxRainPercentage}"
                                     HorizontalOptions="FillAndExpand" />
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid
+                                Padding="0,6">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition
+                                        Height="Auto" />
+                                    <RowDefinition
+                                        Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition
+                                        Width="3*" />
+                                    <ColumnDefinition
+                                        Width="*" />
+                                </Grid.ColumnDefinitions>
                                 <Label
-                                    BindingContext="{x:Reference RainSlider}"
-                                    Text="{Binding Value, StringFormat='{0:F0}%'}"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Margin="10,0"
+                                    HorizontalOptions="Start"
+                                    Text="Max Allowable Rain in Inches"
                                     VerticalOptions="Center" />
-                            </StackLayout>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="10,0"
+                                    HorizontalOptions="End"
+                                    Text="{Binding CalculatedAccumulation, StringFormat='{0:F1} inches'}"
+                                    VerticalOptions="Center" />
+                                <Slider
+                                    Margin="10,0"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    x:Name="RainAccumulationSlider"
+                                    Minimum="0"
+                                    Maximum="50"
+                                    Value="{Binding RainAccumulationSliderValue}"
+                                    HorizontalOptions="FillAndExpand" />
+                            </Grid>
                         </ViewCell>
                         <!-- <ViewCell>
                             <StackLayout

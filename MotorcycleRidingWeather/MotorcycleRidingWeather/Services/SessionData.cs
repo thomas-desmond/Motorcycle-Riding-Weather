@@ -67,9 +67,9 @@ namespace MotorcycleRidingWeather.Services
             DateTimeOffset? currentDay = null;
             var dailyInfoExcludingIgnoreTimes = new DailyWeatherItem();
             double rainAccumlationHour = 0;
-            foreach(var hour in allForecastData.Hourly.Hours)
+            foreach (var hour in allForecastData.Hourly.Hours)
             {
-                
+
                 if (currentDay == null || hour.Time.Day != currentDay.Value.Day)
                 {
                     currentDay = hour.Time;
@@ -130,6 +130,7 @@ namespace MotorcycleRidingWeather.Services
             CurrentUserPreferences.MinRidingTemp = SavedUserSettings.GetValueOrDefault(AppSettingKeys.USER_MIN_TEMP, 40);
             CurrentUserPreferences.LocationZipCode = SavedUserSettings.GetValueOrDefault(AppSettingKeys.USER_LOCATION, string.Empty);
             CurrentUserPreferences.MaxRainPercentage = SavedUserSettings.GetValueOrDefault(AppSettingKeys.USER_MAX_PRECIP_PERCENT, 5);
+            CurrentUserPreferences.MaxRainAccumulation = SavedUserSettings.GetValueOrDefault(AppSettingKeys.USER_MAX_RAIN_ACCUMULATION, 1.0);
 
             return CurrentUserPreferences;
         }
@@ -141,6 +142,8 @@ namespace MotorcycleRidingWeather.Services
             SavedUserSettings.AddOrUpdateValue(AppSettingKeys.USER_MIN_TEMP, newUserPreferces.MinRidingTemp);
             SavedUserSettings.AddOrUpdateValue(AppSettingKeys.USER_LOCATION, newUserPreferces.LocationZipCode);
             SavedUserSettings.AddOrUpdateValue(AppSettingKeys.USER_MAX_PRECIP_PERCENT, newUserPreferces.MaxRainPercentage);
+            SavedUserSettings.AddOrUpdateValue(AppSettingKeys.USER_MAX_RAIN_ACCUMULATION, newUserPreferces.MaxRainAccumulation);
+
         }
 
     }
