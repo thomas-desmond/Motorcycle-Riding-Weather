@@ -38,10 +38,15 @@ namespace MotorcycleRidingWeather.Models
         {
             get
             {
+                if(RainAccummulationCalculatedByHourly <= 0.00999)
+                {
+                    RainAccummulationCalculatedByHourly = 0;
+                }
+
                 return HighTemperature <= SessionData.CurrentUserPreferences.MaxRidingTemp
                         && LowTemperature >= SessionData.CurrentUserPreferences.MinRidingTemp
                         && PrecipitationProbability * 100 <= SessionData.CurrentUserPreferences.MaxRainPercentage
-                        && RainAccummulationCalculatedByHourly <= SessionData.CurrentUserPreferences.MaxRainAccumulation;
+                        && (RainAccummulationCalculatedByHourly <= SessionData.CurrentUserPreferences.MaxRainAccumulation);
             }
         }
 

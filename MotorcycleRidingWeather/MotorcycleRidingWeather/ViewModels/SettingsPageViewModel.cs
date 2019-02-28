@@ -38,6 +38,7 @@ namespace MotorcycleRidingWeather.ViewModels
             set
             {
                 SetProperty(ref _rainAccumulationSliderValue, value);
+                UserPreferences.MaxRainAccumulation = _rainAccumulationSliderValue * .1;
                 CalculatedAccumulation = _rainAccumulationSliderValue * .1;
 
             }
@@ -105,6 +106,7 @@ namespace MotorcycleRidingWeather.ViewModels
         void InitalizePageWithUserSettings()
         {
             UserPreferences = _sessionData.GetCurrentUserPreferences();
+            RainAccumulationSliderValue = UserPreferences.MaxRainAccumulation / .1;
         }
     }
 }

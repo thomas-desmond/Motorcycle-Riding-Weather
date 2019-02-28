@@ -151,6 +151,8 @@
     <AndroidResource Include="Resources\drawable\rain24.png" />
     <AndroidResource Include="Resources\drawable\rain32.png" />
     <AndroidResource Include="Resources\drawable\wind32.png" />
+    <AndroidResource Include="Resources\drawable\drop24.png" />
+    <AndroidResource Include="Resources\drawable\drop32.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

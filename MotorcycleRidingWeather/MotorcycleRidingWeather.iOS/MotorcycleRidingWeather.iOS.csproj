@@ -153,6 +153,8 @@
     <BundleResource Include="Resources\rain24.png" />
     <BundleResource Include="Resources\rain32.png" />
     <BundleResource Include="Resources\wind32.png" />
+    <BundleResource Include="Resources\drop24.png" />
+    <BundleResource Include="Resources\drop32.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -123,6 +123,12 @@
                             FontSize="Medium"
                             TextColor="White"
                             Text="{Binding Path=TodayWeather.WindSpeed, StringFormat='{0:0} m/s'}" />
+                        <Image
+                            Source="drop32.png" />
+                        <Label
+                            FontSize="Medium"
+                            TextColor="White"
+                            Text="{Binding Path=TodayWeather.RainAccummulationCalculatedByHourly, StringFormat='{0:F2} in'}" />
                     </StackLayout>
                     <Button
                         IsVisible="false"
@@ -279,6 +285,18 @@
                                                 Margin="0,0,5,0"
                                                 TextColor="White"
                                                 Text="{Binding Path=WindSpeed, StringFormat='{0:0} m/s'}"
+                                                FontSize="Medium" />
+                                        </StackLayout>
+                                        <StackLayout
+                                            Orientation="Horizontal">
+                                            <Image
+                                                Source="drop24.png" />
+                                            <Label
+                                                x:Name="RainAccumulation"
+                                                VerticalOptions="Center"
+                                                Margin="0,0,5,0"
+                                                TextColor="White"
+                                                Text="{Binding Path=RainAccummulationCalculatedByHourly, StringFormat='{0:F2} in'}"
                                                 FontSize="Medium" />
                                         </StackLayout>
                                     </StackLayout>
