@@ -106,18 +106,21 @@ namespace MotorcycleRidingWeather.ViewModels
             {
                 zipCode = "Set A Location";
             }
-            Title = zipCode;
-            IsRefreshActive = true;
-            var weatherInfo = await _sessionData.GetWeatherByZipCode(zipCode);
-            WeatherDisplayInformation =
-                new ObservableCollection<DailyWeatherItem>(weatherInfo);
-            IsRefreshActive = false;
-            if (_sessionData.SessionDailyWeatherData.Count > 0)
+            else
             {
-                TodayWeather = _sessionData.SessionDailyWeatherData[0];
-                WeatherDisplayInformation.RemoveAt(0);
+                Title = zipCode;
+                IsRefreshActive = true;
+                var weatherInfo = await _sessionData.GetWeatherByZipCode(zipCode);
+                WeatherDisplayInformation =
+                    new ObservableCollection<DailyWeatherItem>(weatherInfo);
+                IsRefreshActive = false;
+                if (_sessionData.SessionDailyWeatherData.Count > 0)
+                {
+                    TodayWeather = _sessionData.SessionDailyWeatherData[0];
+                    WeatherDisplayInformation.RemoveAt(0);
+                }
+                ShouldShowPage = true;
             }
-            ShouldShowPage = true;
         }
 
         public override async void OnAppearing()
