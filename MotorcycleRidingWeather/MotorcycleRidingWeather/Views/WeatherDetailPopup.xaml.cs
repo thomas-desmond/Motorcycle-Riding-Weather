@@ -21,7 +21,7 @@ namespace MotorcycleRidingWeather.Views
 
         protected override Task OnAppearingAnimationEndAsync()
         {
-            return Content.FadeTo(0.5);
+            return Content.FadeTo(1);
         }
 
         protected override Task OnDisappearingAnimationBeginAsync()
