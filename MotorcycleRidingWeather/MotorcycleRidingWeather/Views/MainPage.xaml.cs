@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MotorcycleRidingWeather.Models;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace MotorcycleRidingWeather.Views
@@ -13,6 +15,13 @@ namespace MotorcycleRidingWeather.Views
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+        }
+
+        async void Handle_Clicked(object sender, System.EventArgs e)
+        {
+            var button = (Button)sender;
+            var itemclicked = (DailyWeatherItem)button.CommandParameter;
+            await PopupNavigation.Instance.PushAsync(new WeatherDetailPopup(itemclicked));
         }
     }
 }
