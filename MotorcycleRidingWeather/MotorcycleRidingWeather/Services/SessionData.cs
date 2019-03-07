@@ -91,12 +91,12 @@ namespace MotorcycleRidingWeather.Services
                     UVIndex = day.UVIndex,
                     WindGust = day.WindGust,
                     Icon = day.Icon,
+                    Summary = day.Summary,
                     RainAccummulationCalculatedByDaily = day.PrecipitationIntensity * 24,
-                    RainAccummulationCalculatedByHourly = GetHourlyRain(allForecastData, day.Time.Day),
                 };
 
 
-                if (dayInfo.RainAccummulationCalculatedByHourly < .01)
+                if (dayInfo.RainAccummulationCalculatedByDaily < .01)
                 {
                     dayInfo.PrecipitationProbability = 0;
                     rainAccumlationHour = 0;

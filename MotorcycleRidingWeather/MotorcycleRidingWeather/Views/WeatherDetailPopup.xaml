@@ -35,19 +35,99 @@
             <Frame
                 x:Name="FrameContainer"
                 Margin="15"
-                HeightRequest="350"
-                WidthRequest="250"
+                HeightRequest="450"
+                WidthRequest="350"
                 HorizontalOptions="Center"
-                BackgroundColor="White">
-                <StackLayout
+                BackgroundColor="#aee2fc">
+                <Grid
                     IsClippedToBounds="True"
-                    Padding="10, 5"
-                    Spacing="3">
+                    VerticalOptions="Center"
+                    Padding="10, 5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Grid.Row="0"
+                        Grid.Column="0">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Image
+                                Source="rain32.png" />
+                            <Label
+                                FontSize="Medium"
+                                TextColor="Black"
+                                Text="{Binding PrecipitationString}" />
+                        </StackLayout>
+                        <Label
+                            FontSize="Small"
+                            Text="Rain %" />
+                    </StackLayout>
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Grid.Row="0"
+                        Grid.Column="1">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Image
+                                Source="wind32.png" />
+                            <Label
+                                FontSize="Medium"
+                                TextColor="Black"
+                                Text="{Binding WindSpeed, StringFormat='{0:0} m/s'}" />
+                        </StackLayout>
+                        <Label
+                            FontSize="Small"
+                            Text="Wind Speed" />
+                    </StackLayout>
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Grid.Row="0"
+                        Grid.Column="2">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Image
+                                Source="drop32.png" />
+                            <Label
+                                FontSize="Medium"
+                                TextColor="Black"
+                                Text="{Binding RainAccummulationCalculatedByDaily, StringFormat='{0:F2} in'}" />
+                        </StackLayout>
+                        <Label
+                            FontSize="Small"
+                            Text="Total Rain" />
+                    </StackLayout>
                     <Image
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        HorizontalOptions="Center"
                         Source="{Binding WeatherIcon}" />
-                </StackLayout>
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        VerticalOptions="Center"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        FontSize="25"
+                        Text="{Binding Summary}" />
+                </Grid>
             </Frame>
-            <ContentView
+            <!--<ContentView
                 AbsoluteLayout.LayoutFlags="PositionProportional"
                 AbsoluteLayout.LayoutBounds="1, 0, -1, -1">
                 <Image
@@ -62,7 +142,7 @@
                             WinPhone="Assets/close_circle_button.png" />
                     </Image.Source>
                 </Image>
-            </ContentView>
+            </ContentView>-->
         </AbsoluteLayout>
     </ScrollView>
 </pages:PopupPage>

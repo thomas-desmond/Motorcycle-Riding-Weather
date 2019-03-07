@@ -23,5 +23,12 @@ namespace MotorcycleRidingWeather.Views
             var itemclicked = (DailyWeatherItem)button.CommandParameter;
             await PopupNavigation.Instance.PushAsync(new WeatherDetailPopup(itemclicked));
         }
+
+        async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+            var button = (ListView)sender;
+            var itemclicked = (DailyWeatherItem)button.SelectedItem;
+            await PopupNavigation.Instance.PushAsync(new WeatherDetailPopup(itemclicked));
+        }
     }
 }

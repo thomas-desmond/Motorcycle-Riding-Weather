@@ -41,7 +41,7 @@
                         Title="Location">
                         <EntryCell
                             HorizontalTextAlignment="Center"
-                            Keyboard="Default"
+                            Keyboard="Numeric"
                             Label="Location"
                             Placeholder="Zip Code Only"
                             Text="{Binding UserPreferences.LocationZipCode}" />

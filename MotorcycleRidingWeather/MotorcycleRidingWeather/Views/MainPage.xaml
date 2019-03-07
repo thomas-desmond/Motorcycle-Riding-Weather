@@ -74,7 +74,9 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition
-                        Height="200" />
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="Auto" />
                     <RowDefinition
                         Height="Auto" />
                     <RowDefinition
@@ -89,6 +91,7 @@
                 <StackLayout
                     Grid.Row="0"
                     Grid.Column="1"
+                    Spacing="10"
                     VerticalOptions="Center"
                     HorizontalOptions="Center">
                     <Label
@@ -128,36 +131,33 @@
                         <Label
                             FontSize="Medium"
                             TextColor="White"
-                            Text="{Binding Path=TodayWeather.RainAccummulationCalculatedByHourly, StringFormat='{0:F2} in'}" />
+                            Text="{Binding Path=TodayWeather.RainAccummulationCalculatedByDaily, StringFormat='{0:F2} in'}" />
                     </StackLayout>
-                    <Button
-                        IsVisible="true"
-                        Text="More Details"
-                        BackgroundColor="White"
-                        Clicked="Handle_Clicked"
-                        CommandParameter="{Binding TodayWeather}"
-                        TextColor="Black"
-                        BorderWidth="2"
-                        FontSize="Medium"
-                        HeightRequest="20"
-                        BorderColor="Transparent"
-                        BorderRadius="8" />
                 </StackLayout>
-                <BoxView
-                    Grid.Row="2"
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    IsVisible="false"
+                    Text="More Details"
+                    BackgroundColor="White"
+                    Clicked="Handle_Clicked"
+                    Margin="2"
+                    CommandParameter="{Binding TodayWeather}"
+                    TextColor="Black"
+                    BorderWidth="1" 
+                    FontSize="10"
+                    HeightRequest="25"
+                    BorderColor="Transparent"
+                    BorderRadius="7" />
+                <StackLayout
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Color="White"
-                    Margin="5,0" />
-                <StackLayout
+                    Grid.Row="2"
                     IsVisible="{Binding TodayWeather.IsGoodRidingDay}"
                     Orientation="Horizontal"
                     HorizontalOptions="Center"
                     Padding="0,3,0,0"
-                    VerticalOptions="End"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Grid.Row="1">
+                    VerticalOptions="End">
                     <Image
                         Source="bike.png" />
                     <Label
@@ -167,14 +167,14 @@
                         Text="Today is a good day to ride!" />
                 </StackLayout>
                 <StackLayout
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="2"
                     IsVisible="{Binding TodayWeather.IsBadRidingDay}"
                     Orientation="Horizontal"
                     HorizontalOptions="Center"
                     Padding="0,3,0,0"
-                    VerticalOptions="End"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Grid.Row="1">
+                    VerticalOptions="End">
                     <Image
                         Source="car.png" />
                     <Label
@@ -183,6 +183,12 @@
                         VerticalOptions="Center"
                         Text="Looks like a car driving day :(" />
                 </StackLayout>
+                <BoxView
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Color="White"
+                    Margin="5,0" />
             </Grid>
             <Grid
                 RowSpacing="0">
@@ -197,6 +203,7 @@
                     ItemsSource="{Binding WeatherDisplayInformation}"
                     HasUnevenRows="true"
                     SeparatorVisibility="None"
+                    ItemTapped="Handle_ItemTapped"
                     IsRefreshing="{Binding IsRefreshActive}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -298,7 +305,7 @@
                                                 VerticalOptions="Center"
                                                 Margin="0,0,5,0"
                                                 TextColor="White"
-                                                Text="{Binding Path=RainAccummulationCalculatedByHourly, StringFormat='{0:F2} in'}"
+                                                Text="{Binding Path=RainAccummulationCalculatedByDaily, StringFormat='{0:F2} in'}"
                                                 FontSize="Medium" />
                                         </StackLayout>
                                     </StackLayout>
