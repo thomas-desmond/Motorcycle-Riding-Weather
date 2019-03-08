@@ -64,13 +64,13 @@
             <Grid
                 x:Name="TodaysWeatherGrid"
                 RowSpacing="0"
-                Margin="0,0,0,10"
+                Padding="0,0,0,10"
                 BackgroundColor="Transparent">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
-                        Width="4*" />
+                        Width="5*" />
                     <ColumnDefinition
-                        Width="6*" />
+                        Width="8*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition
@@ -91,7 +91,7 @@
                 <StackLayout
                     Grid.Row="0"
                     Grid.Column="1"
-                    Spacing="10"
+                    Spacing="2"
                     VerticalOptions="Center"
                     HorizontalOptions="Center">
                     <Label
@@ -110,26 +110,33 @@
                         VerticalOptions="Start"
                         TextColor="White"
                         FontAttributes="Bold"
-                        FontSize="45"
+                        FontSize="40"
                         Text="{Binding TodayWeather.HighLowFormattedText}" />
                     <StackLayout
+                        Spacing="3"
                         Orientation="Horizontal">
                         <Image
-                            Source="rain32.png" />
+                            VerticalOptions="Center"
+                            Source="rain24.png" />
                         <Label
-                            FontSize="Medium"
+                            VerticalOptions="Center"
+                            FontSize="15"
                             TextColor="White"
                             Text="{Binding TodayWeather.PrecipitationString}" />
                         <Image
-                            Source="wind32.png" />
+                            VerticalOptions="Center"
+                            Source="wind24.png" />
                         <Label
-                            FontSize="Medium"
+                            VerticalOptions="Center"
+                            FontSize="15"
                             TextColor="White"
                             Text="{Binding Path=TodayWeather.WindSpeed, StringFormat='{0:0} m/s'}" />
                         <Image
-                            Source="drop32.png" />
+                            VerticalOptions="Center"
+                            Source="drop24.png" />
                         <Label
-                            FontSize="Medium"
+                            VerticalOptions="Center"
+                            FontSize="15"
                             TextColor="White"
                             Text="{Binding Path=TodayWeather.RainAccummulationCalculatedByDaily, StringFormat='{0:F2} in'}" />
                     </StackLayout>
@@ -137,18 +144,23 @@
                 <Button
                     Grid.Row="1"
                     Grid.Column="1"
-                    IsVisible="false"
-                    Text="More Details"
+                    HorizontalOptions="Center"
+                    HeightRequest="20"
                     BackgroundColor="White"
-                    Clicked="Handle_Clicked"
+                    BorderRadius="7"
+                    WidthRequest="120"
+                    Margin="0,5" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    IsVisible="true"
+                    Text="More Details"
+                    BackgroundColor="Transparent"
                     Margin="2"
-                    CommandParameter="{Binding TodayWeather}"
                     TextColor="Black"
-                    BorderWidth="1" 
-                    FontSize="10"
-                    HeightRequest="25"
-                    BorderColor="Transparent"
-                    BorderRadius="7" />
+                    FontSize="15" />
                 <StackLayout
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
@@ -189,6 +201,14 @@
                     Grid.ColumnSpan="2"
                     Color="White"
                     Margin="5,0" />
+                <Button
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.RowSpan="4"
+                    Clicked="Handle_Clicked"
+                    BackgroundColor="Transparent"
+                    CommandParameter="{Binding TodayWeather}" />
             </Grid>
             <Grid
                 RowSpacing="0">

@@ -50,6 +50,8 @@
                             Height="Auto" />
                         <RowDefinition
                             Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition
@@ -125,6 +127,39 @@
                         HorizontalTextAlignment="Center"
                         FontSize="25"
                         Text="{Binding Summary}" />
+                    <StackLayout
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Grid.Row="3"
+                        IsVisible="{Binding IsGoodRidingDay}"
+                        Orientation="Horizontal"
+                        HorizontalOptions="Center"
+                        Padding="0,3,0,0"
+                        VerticalOptions="End">
+                        <Image
+                            Source="bike.png" />
+                        <Label
+                            TextColor="Black"
+                            Font="Large"
+                            VerticalOptions="Center"
+                            Text="Today is a good day to ride!" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Grid.Row="3"
+                        IsVisible="{Binding IsBadRidingDay}"
+                        Orientation="Horizontal"
+                        HorizontalOptions="Center"
+                        Padding="0,3,0,0"
+                        VerticalOptions="End">
+                        <Image
+                            Source="car.png" />
+                        <Label
+                            Font="Large"
+                            VerticalOptions="Center"
+                            Text="Looks like a car driving day :(" />
+                    </StackLayout>
                 </Grid>
             </Frame>
             <!--<ContentView
