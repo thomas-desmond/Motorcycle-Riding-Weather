@@ -112,55 +112,58 @@
                         FontAttributes="Bold"
                         FontSize="40"
                         Text="{Binding TodayWeather.HighLowFormattedText}" />
-                    <StackLayout
-                        Spacing="3"
-                        Orientation="Horizontal">
-                        <Image
-                            VerticalOptions="Center"
-                            Source="rain24.png" />
+                    <Grid>
+                        <Button
+                            HorizontalOptions="Center"
+                            HeightRequest="20"
+                            BackgroundColor="White"
+                            BorderRadius="7"
+                            WidthRequest="120"
+                            Margin="0,5" />
                         <Label
                             VerticalOptions="Center"
-                            FontSize="15"
-                            TextColor="White"
-                            Text="{Binding TodayWeather.PrecipitationString}" />
-                        <Image
-                            VerticalOptions="Center"
-                            Source="wind24.png" />
-                        <Label
-                            VerticalOptions="Center"
-                            FontSize="15"
-                            TextColor="White"
-                            Text="{Binding Path=TodayWeather.WindSpeed, StringFormat='{0:0} m/s'}" />
-                        <Image
-                            VerticalOptions="Center"
-                            Source="drop24.png" />
-                        <Label
-                            VerticalOptions="Center"
-                            FontSize="15"
-                            TextColor="White"
-                            Text="{Binding Path=TodayWeather.RainAccummulationCalculatedByDaily, StringFormat='{0:F2} in'}" />
-                    </StackLayout>
+                            HorizontalOptions="Center"
+                            IsVisible="true"
+                            Text="More Details"
+                            BackgroundColor="Transparent"
+                            Margin="2"
+                            TextColor="Black"
+                            FontSize="15" />
+                    </Grid>
                 </StackLayout>
-                <Button
+                <StackLayout
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
                     Grid.Row="1"
-                    Grid.Column="1"
+                    Spacing="3"
+                    Padding="0,0,0,5"
                     HorizontalOptions="Center"
-                    HeightRequest="20"
-                    BackgroundColor="White"
-                    BorderRadius="7"
-                    WidthRequest="120"
-                    Margin="0,5" />
-                <Label
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    IsVisible="true"
-                    Text="More Details"
-                    BackgroundColor="Transparent"
-                    Margin="2"
-                    TextColor="Black"
-                    FontSize="15" />
+                    Orientation="Horizontal">
+                    <Image
+                        VerticalOptions="Center"
+                        Source="rain32.png" />
+                    <Label
+                        VerticalOptions="Center"
+                        FontSize="15"
+                        TextColor="White"
+                        Text="{Binding TodayWeather.PrecipitationString}" />
+                    <Image
+                        VerticalOptions="Center"
+                        Source="wind32.png" />
+                    <Label
+                        VerticalOptions="Center"
+                        FontSize="15"
+                        TextColor="White"
+                        Text="{Binding Path=TodayWeather.WindSpeed, StringFormat='{0:0} m/s'}" />
+                    <Image
+                        VerticalOptions="Center"
+                        Source="drop32.png" />
+                    <Label
+                        VerticalOptions="Center"
+                        FontSize="15"
+                        TextColor="White"
+                        Text="{Binding Path=TodayWeather.RainAccummulationCalculatedByDaily, StringFormat='{0:F2} in'}" />
+                </StackLayout>
                 <StackLayout
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
