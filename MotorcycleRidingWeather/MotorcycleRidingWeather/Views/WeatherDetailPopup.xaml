@@ -52,6 +52,8 @@
                             Height="Auto" />
                         <RowDefinition
                             Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition
@@ -62,8 +64,19 @@
                             Width="*" />
                     </Grid.ColumnDefinitions>
                     <StackLayout
-                        HorizontalOptions="Center"
                         Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        HorizontalOptions="Center"
+                        Padding="0,0,0,8">
+                        <Label
+                            Text="{Binding CurrentDayLabelText}"
+                            FontSize="32"
+                            FontAttributes="Bold" />
+                    </StackLayout>
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Grid.Row="1"
                         Grid.Column="0">
                         <StackLayout
                             Orientation="Horizontal">
@@ -80,7 +93,7 @@
                     </StackLayout>
                     <StackLayout
                         HorizontalOptions="Center"
-                        Grid.Row="0"
+                        Grid.Row="1"
                         Grid.Column="1">
                         <StackLayout
                             Orientation="Horizontal">
@@ -97,7 +110,7 @@
                     </StackLayout>
                     <StackLayout
                         HorizontalOptions="Center"
-                        Grid.Row="0"
+                        Grid.Row="1"
                         Grid.Column="2">
                         <StackLayout
                             Orientation="Horizontal">
@@ -113,13 +126,13 @@
                             Text="Total Rain" />
                     </StackLayout>
                     <Image
-                        Grid.Row="1"
+                        Grid.Row="2"
                         Grid.Column="0"
                         Grid.ColumnSpan="3"
                         HorizontalOptions="Center"
                         Source="{Binding WeatherIcon}" />
                     <Label
-                        Grid.Row="2"
+                        Grid.Row="3"
                         Grid.Column="0"
                         Grid.ColumnSpan="3"
                         VerticalOptions="Center"
@@ -130,7 +143,7 @@
                     <StackLayout
                         Grid.Column="0"
                         Grid.ColumnSpan="3"
-                        Grid.Row="3"
+                        Grid.Row="4"
                         IsVisible="{Binding IsGoodRidingDay}"
                         Orientation="Horizontal"
                         HorizontalOptions="Center"
@@ -147,7 +160,7 @@
                     <StackLayout
                         Grid.Column="0"
                         Grid.ColumnSpan="3"
-                        Grid.Row="3"
+                        Grid.Row="4"
                         IsVisible="{Binding IsBadRidingDay}"
                         Orientation="Horizontal"
                         HorizontalOptions="Center"
