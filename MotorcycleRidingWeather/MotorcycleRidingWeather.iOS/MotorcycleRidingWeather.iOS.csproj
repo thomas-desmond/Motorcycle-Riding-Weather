@@ -156,6 +156,10 @@
     <BundleResource Include="Resources\drop24.png" />
     <BundleResource Include="Resources\drop32.png" />
     <BundleResource Include="Resources\ic_launcher.png" />
+    <BundleResource Include="Resources\close.png" />
+    <BundleResource Include="Resources\drop16.png" />
+    <BundleResource Include="Resources\wind16.png" />
+    <BundleResource Include="Resources\umbrella16.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

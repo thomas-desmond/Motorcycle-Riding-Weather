@@ -200,7 +200,7 @@ namespace MotorcycleRidingWeather.Models
         {
             get
             {
-                return $"{Time.DayOfWeek}";
+                return $"{Time.DayOfWeek.ToString().Substring(0,3)}";
             }
         }
 

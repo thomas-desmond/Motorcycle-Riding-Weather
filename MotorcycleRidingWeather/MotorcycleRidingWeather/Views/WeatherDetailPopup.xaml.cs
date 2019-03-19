@@ -38,5 +38,10 @@ namespace MotorcycleRidingWeather.Views
         {
             return Content.FadeTo(1);
         }
+
+        async void Handle_CloseClicked(object sender, System.EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAllAsync();
+        }
     }
 }

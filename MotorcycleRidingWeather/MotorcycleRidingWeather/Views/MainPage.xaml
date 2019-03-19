@@ -170,15 +170,16 @@
                     Grid.Row="2"
                     IsVisible="{Binding TodayWeather.IsGoodRidingDay}"
                     Orientation="Horizontal"
-                    HorizontalOptions="Center"
+                    HorizontalOptions="CenterAndExpand"
                     Padding="0,3,0,0"
                     VerticalOptions="End">
                     <Image
                         Source="bike.png" />
                     <Label
                         TextColor="White"
-                        Font="Large"
+                        FontSize="22"
                         VerticalOptions="Center"
+                        FontAttributes="Bold"
                         Text="Today is a good day to ride!" />
                 </StackLayout>
                 <StackLayout
@@ -194,8 +195,9 @@
                         Source="car.png" />
                     <Label
                         TextColor="White"
-                        Font="Large"
+                        FontSize="22"
                         VerticalOptions="Center"
+                        FontAttributes="Bold"
                         Text="Looks like a car driving day :(" />
                 </StackLayout>
                 <Button
@@ -257,7 +259,7 @@
                                             <ColumnDefinition
                                                 Width="Auto" />
                                             <ColumnDefinition
-                                                Width="5*" />
+                                                Width="4*" />
                                             <ColumnDefinition
                                                 Width="3*" />
                                             <ColumnDefinition
@@ -286,8 +288,8 @@
                                                 x:Name="DateLabel"
                                                 TextColor="White"
                                                 FontAttributes="Bold"
-                                                Text="{Binding StructuredTime}"
-                                                FontSize="22" />
+                                                Text="{Binding StructuredTime, StringFormat='{0:F3}'}"
+                                                FontSize="20" />
                                         </StackLayout>
                                         <StackLayout
                                             Grid.Row="0"
@@ -298,7 +300,7 @@
                                             <StackLayout
                                                 Orientation="Horizontal">
                                                 <Image
-                                                    Source="rain24.png" />
+                                                    Source="rain16.png" />
                                                 <Label
                                                     x:Name="PrecipitationPercentage"
                                                     VerticalOptions="Center"
@@ -310,7 +312,7 @@
                                             <StackLayout
                                                 Orientation="Horizontal">
                                                 <Image
-                                                    Source="wind24.png" />
+                                                    Source="wind16.png" />
                                                 <Label
                                                     x:Name="Wind"
                                                     VerticalOptions="Center"
@@ -322,7 +324,7 @@
                                             <StackLayout
                                                 Orientation="Horizontal">
                                                 <Image
-                                                    Source="drop24.png" />
+                                                    Source="drop16.png" />
                                                 <Label
                                                     x:Name="RainAccumulation"
                                                     VerticalOptions="Center"
