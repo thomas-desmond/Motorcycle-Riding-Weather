@@ -300,7 +300,7 @@
                                             <StackLayout
                                                 Orientation="Horizontal">
                                                 <Image
-                                                    Source="rain16.png" />
+                                                    Source="umbrella16.png" />
                                                 <Label
                                                     x:Name="PrecipitationPercentage"
                                                     VerticalOptions="Center"

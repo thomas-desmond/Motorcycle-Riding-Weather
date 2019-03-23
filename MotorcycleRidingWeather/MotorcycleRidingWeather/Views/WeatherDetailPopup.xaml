@@ -179,15 +179,6 @@
                     </StackLayout>
                 </Grid>
             </Frame>
-            <ContentView
-                AbsoluteLayout.LayoutFlags="PositionProportional"
-                AbsoluteLayout.LayoutBounds="1, 0, -1, -1">
-                <Button
-                    x:Name="CloseImage"
-                    Image="close.png"
-                    Clicked="Handle_CloseClicked">
-                </Button>
-            </ContentView>
         </AbsoluteLayout>
     </ScrollView>
 </pages:PopupPage>
