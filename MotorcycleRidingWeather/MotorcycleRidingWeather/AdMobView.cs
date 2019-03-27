@@ -18,7 +18,7 @@ namespace MotorcycleRidingWeather
             {
                 if (Device.RuntimePlatform == Device.iOS)
                 {
-                    return "ca-app-pub-3940256099942544/2934735716";
+                    return Keys.IOS_ADMOB_AD_ID;
                 }
 
                 return Keys.ANDROID_ADMOB_AD_ID;
