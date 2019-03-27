@@ -22,7 +22,7 @@ namespace MotorcycleRidingWeather.Droid.PlatformSpecific
                 return adView;
 
             // This is a string in the Resources/values/strings.xml that I added or you can modify it here. This comes from admob and contains a / in it
-            adUnitId = Keys.ADMOB_AD_ID;
+            adUnitId = Keys.ANDROID_ADMOB_AD_ID;
             adView = new AdView(Forms.Context);
             adView.AdSize = adSize;
             adView.AdUnitId = adUnitId;

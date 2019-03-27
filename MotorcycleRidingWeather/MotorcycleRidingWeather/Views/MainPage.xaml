@@ -358,7 +358,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <local:AdMobView
-                    AdUnitId="ca-app-pub-6670943348936598/2069009816"
                     Grid.Row="1" />
             </Grid>
             <StackLayout.Triggers>

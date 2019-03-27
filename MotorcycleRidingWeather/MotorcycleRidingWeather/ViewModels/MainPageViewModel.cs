@@ -63,7 +63,7 @@ namespace MotorcycleRidingWeather.ViewModels
         {
             get
             {
-                return Keys.ADMOB_AD_ID;
+                return Keys.ANDROID_ADMOB_AD_ID;
             }
         }
 

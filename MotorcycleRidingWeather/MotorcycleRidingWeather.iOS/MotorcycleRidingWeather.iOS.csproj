@@ -95,6 +95,7 @@
     <ITunesArtwork Include="iTunesArtwork@1x.png" />
     <ITunesArtwork Include="iTunesArtwork@2x.png" />
     <ITunesArtwork Include="iTunesArtwork@3x.png" />
+    <Compile Include="AdMobViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Contents.json" />
@@ -185,6 +186,9 @@
     </PackageReference>
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>1.1.5.188</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Firebase.iOS.AdMob">
+      <Version>7.27.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

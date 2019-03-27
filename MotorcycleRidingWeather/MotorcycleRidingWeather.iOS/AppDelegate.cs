@@ -21,6 +21,7 @@ namespace MotorcycleRidingWeather.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Google.MobileAds.MobileAds.Configure("ca-app-pub-6670943348936598~8658832182");
             XFGloss.iOS.Library.Init();
             Rg.Plugins.Popup.Popup.Init();
 
