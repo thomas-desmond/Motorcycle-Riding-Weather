@@ -66,7 +66,6 @@ namespace MotorcycleRidingWeather.Services
 
             DateTimeOffset? currentDay = null;
             var dailyInfoExcludingIgnoreTimes = new DailyWeatherItem();
-            double rainAccumlationHour = 0;
             foreach (var hour in allForecastData.Hourly.Hours)
             {
 
@@ -99,7 +98,6 @@ namespace MotorcycleRidingWeather.Services
                 if (dayInfo.RainAccummulationCalculatedByDaily < .01)
                 {
                     dayInfo.PrecipitationProbability = 0;
-                    rainAccumlationHour = 0;
                 }
                 dailyInfoToDisplay.Add(dayInfo);
             }
