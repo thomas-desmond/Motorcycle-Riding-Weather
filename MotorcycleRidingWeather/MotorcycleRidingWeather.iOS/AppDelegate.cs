@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using Google.MobileAds;
 using Prism;
 using Prism.Ioc;
 using UIKit;
@@ -21,9 +22,9 @@ namespace MotorcycleRidingWeather.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            Google.MobileAds.MobileAds.Configure("ca-app-pub-6670943348936598~8658832182");
             XFGloss.iOS.Library.Init();
             Rg.Plugins.Popup.Popup.Init();
+            MobileAds.Configure("ca-app-pub-6670943348936598~8658832182");
 
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App(new iOSInitializer()));
