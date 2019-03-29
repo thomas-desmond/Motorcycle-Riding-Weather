@@ -68,12 +68,15 @@ namespace MotorcycleRidingWeather.ViewModels
             _pageDialogService = pageDialogService;
         }
 
-        void SendFeedback()
+        async void SendFeedback()
         {
             var emailMessenger = CrossMessaging.Current.EmailMessenger;
 
             if (emailMessenger.CanSendEmail == false)
             {
+                await _pageDialogService.DisplayAlertAsync("Email", 
+                    "It seems I cannot access your email client, if you would like to send feedback please email motorcycleridingweather@gmail.com", 
+                    "OK");
                 return;
             }
             emailMessenger.SendEmail("motorcycleridingweather@gmail.com",
