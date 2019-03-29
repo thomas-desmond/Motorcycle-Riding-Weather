@@ -157,6 +157,8 @@
     <BundleResource Include="Resources\umbrella16.png" />
     <BundleResource Include="iTunesArtwork%401x.png" />
     <BundleResource Include="iTunesArtwork%403x.png" />
+    <BundleResource Include="Resources\gradient.png" />
+    <BundleResource Include="Resources\motoIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
