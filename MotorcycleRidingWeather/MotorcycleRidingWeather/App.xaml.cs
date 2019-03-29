@@ -43,7 +43,7 @@ namespace MotorcycleRidingWeather
         protected override void OnStart()
         {
             base.OnStart();
-            AppCenter.Start("android=bd9c6543-5e1d-424d-975f-25c679571f39;",typeof(Analytics), typeof(Crashes));
+            AppCenter.Start("android=bd9c6543-5e1d-424d-975f-25c679571f39;" + "ios=875d9205-a2be-49a8-8c3e-08cada6b0588;", typeof(Analytics), typeof(Crashes));
         }
 
     }
