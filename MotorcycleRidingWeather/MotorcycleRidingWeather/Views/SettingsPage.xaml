@@ -16,15 +16,19 @@
                     <ColumnDefinition
                         Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button
-                    Grid.Column="0"
-                    Text="Back"
-                    FontAttributes="Bold"
-                    Margin="5,0,0,0"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Center"
-                    BackgroundColor="Transparent"
-                    Command="{Binding NavigateBack}" />
+                    <Button
+                        Grid.Column="0"
+                        Text="Save"
+                        FontAttributes="Bold"
+                        Margin="8,2,0,2"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        BorderRadius="7"
+                        BorderColor="Black"
+                        BackgroundColor="#e6e6e6"
+                        TextColor="Blue"
+                        WidthRequest="75"
+                        Command="{Binding NavigateBack}" />
                 <Label
                     Grid.Column="1"
                     HorizontalOptions="Center"

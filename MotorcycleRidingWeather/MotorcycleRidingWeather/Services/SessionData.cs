@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Arex388.Geocodio;
 using DarkSkyApi;
 using DarkSkyApi.Models;
 using Geocoding;
@@ -44,9 +46,17 @@ namespace MotorcycleRidingWeather.Services
 
         public async Task<ObservableCollection<DailyWeatherItem>> GetWeatherByZipCode(string zipCode)
         {
-            var locationData = await geocoder.GeocodeAsync(zipCode);
-            var latitude = locationData.First().Coordinates.Latitude;
-            var longitude = locationData.First().Coordinates.Longitude;
+            GeocodioClient geocodio = null;
+            GeocodeResponse geocode = null;
+            using (var httpClient = new HttpClient())
+            {   
+                geocodio = new GeocodioClient(
+                httpClient,
+                Keys.GEOCODIO_API_KEY);
+                geocode = await geocodio.GetGeocodeAsync(zipCode);
+            }
+            var latitude = (double)geocode.Results[0].Location.Latitude;
+            var longitude =(double)geocode.Results[0].Location.Longitude;
             Forecast allForecastData = await darkSkyService.GetWeatherDataAsync(latitude, longitude);
             SessionDailyWeatherData = GrabDailyData(allForecastData);
             return SessionDailyWeatherData;

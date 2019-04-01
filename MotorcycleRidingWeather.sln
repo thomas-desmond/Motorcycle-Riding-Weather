@@ -49,6 +49,7 @@ Global
 		{61250B70-42FA-480F-9DB5-BCC9A9B0DBAD}.Ad-Hoc|iPhone.Build.0 = Debug|Any CPU
 		{61250B70-42FA-480F-9DB5-BCC9A9B0DBAD}.AppStore|iPhone.ActiveCfg = Debug|Any CPU
 		{61250B70-42FA-480F-9DB5-BCC9A9B0DBAD}.AppStore|iPhone.Build.0 = Debug|Any CPU
+		{61250B70-42FA-480F-9DB5-BCC9A9B0DBAD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4D8F402A-FF68-49FA-9FED-9F8C571FCC4F}.Debug|Any CPU.ActiveCfg = Release|iPhone
 		{4D8F402A-FF68-49FA-9FED-9F8C571FCC4F}.Release|Any CPU.ActiveCfg = Release|iPhone
 		{4D8F402A-FF68-49FA-9FED-9F8C571FCC4F}.Release|Any CPU.Build.0 = Release|iPhone

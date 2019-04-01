@@ -6,11 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="DarkSkyApi" Version="3.3.0" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
-    <PackageReference Include="Geocoding.Core" Version="4.0.1" />
-    <PackageReference Include="Geocoding.MapQuest" Version="4.0.1" />
     <PackageReference Include="Prism.DryIoc.Forms" Version="7.0.0.396" />
     <PackageReference Include="Xamarin.Forms" Version="3.0.0.561731" />
     <PackageReference Include="Xam.Plugins.Messaging" Version="5.2.0" />
@@ -19,6 +17,7 @@
     <PackageReference Include="Xamarin.Firebase.Ads" Version="60.1142.1" />
     <PackageReference Include="Ansuria.XFGloss" Version="1.1.3" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
+    <PackageReference Include="Arex388.Geocodio" Version="1.2.1" />
   </ItemGroup>
 
   <ItemGroup>

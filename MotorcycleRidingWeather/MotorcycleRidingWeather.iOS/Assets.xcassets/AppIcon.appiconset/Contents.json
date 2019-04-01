@@ -1,103 +1,102 @@
 {
   "images": [
     {
-      "filename": "ios40.png",
+      "filename": "Icon-Spotlight-40.png",
       "size": "20x20",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "ios60.png",
+      "filename": "Icon-60.png",
       "size": "20x20",
       "scale": "3x",
       "idiom": "iphone"
     },
     {
-      "filename": "ios58.png",
+      "filename": "Icon-Small@2x.png",
       "size": "29x29",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "ios87.png",
+      "filename": "Icon-Small@3x.png",
       "size": "29x29",
       "scale": "3x",
       "idiom": "iphone"
     },
     {
-      "filename": "ios80.png",
+      "filename": "Icon-Spotlight-40@2x.png",
       "size": "40x40",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "ios120.png",
+      "filename": "Icon-Spotlight-40@3x.png",
       "size": "40x40",
       "scale": "3x",
       "idiom": "iphone"
     },
     {
-      "filename": "ios120-1.png",
+      "filename": "120.png",
       "size": "60x60",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "ios180.png",
+      "filename": "180.png",
       "size": "60x60",
       "scale": "3x",
       "idiom": "iphone"
     },
     {
-      "filename": "ios20.png",
       "size": "20x20",
       "scale": "1x",
       "idiom": "ipad"
     },
     {
-      "filename": "ios40-1.png",
+      "filename": "Icon-Spotlight-40-2.png",
       "size": "20x20",
       "scale": "2x",
       "idiom": "ipad"
     },
     {
-      "filename": "ios29.png",
+      "filename": "Icon-Small.png",
       "size": "29x29",
       "scale": "1x",
       "idiom": "ipad"
     },
     {
-      "filename": "ios58-1.png",
+      "filename": "Icon-Small@2x-1.png",
       "size": "29x29",
       "scale": "2x",
       "idiom": "ipad"
     },
     {
-      "filename": "ios40-2.png",
+      "filename": "Icon-Spotlight-40-1.png",
       "size": "40x40",
       "scale": "1x",
       "idiom": "ipad"
     },
     {
-      "filename": "ios80-1.png",
+      "filename": "Icon-Spotlight-40@2x-1.png",
       "size": "40x40",
       "scale": "2x",
       "idiom": "ipad"
     },
     {
-      "filename": "ios167.png",
+      "filename": "187.png",
       "size": "83.5x83.5",
       "scale": "2x",
       "idiom": "ipad"
     },
     {
-      "filename": "ios76.png",
+      "filename": "Icon-76.png",
       "size": "76x76",
       "scale": "1x",
       "idiom": "ipad"
     },
     {
-      "filename": "ios152.png",
+      "filename": "Icon-76@2x.png",
       "size": "76x76",
       "scale": "2x",
       "idiom": "ipad"
