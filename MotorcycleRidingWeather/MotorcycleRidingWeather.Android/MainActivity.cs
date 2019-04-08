@@ -1,10 +1,13 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
 using Android.Content.PM;
 using Android.Gms.Ads;
 using Android.OS;
 using MotorcycleRidingWeather.Constants;
+using MotorcycleRidingWeather.Views;
 using Prism;
 using Prism.Ioc;
+using Rg.Plugins.Popup.Services;
 
 namespace MotorcycleRidingWeather.Droid
 {
@@ -25,6 +28,18 @@ namespace MotorcycleRidingWeather.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
             XFGloss.Droid.Library.Init(this, bundle);
+        }
+
+        public override async void OnBackPressed()
+        {
+            if (Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed))
+            {
+                await PopupNavigation.Instance.PopAsync();
+            }
+            else
+            {
+                base.OnBackPressed();
+            }
         }
     }
 

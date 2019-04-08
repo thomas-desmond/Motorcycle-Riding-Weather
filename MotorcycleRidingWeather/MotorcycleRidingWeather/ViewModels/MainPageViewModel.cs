@@ -111,6 +111,13 @@ namespace MotorcycleRidingWeather.ViewModels
                 Title = zipCode;
                 IsRefreshActive = true;
                 var weatherInfo = await _sessionData.GetWeatherByZipCode(zipCode);
+                if (weatherInfo.Count == 0)
+                {
+                    await _pageDialogService.DisplayAlertAsync("Error", "I was unable to retrieve weather data, please check your zip code is correct", "OK");
+                    IsRefreshActive = false;
+                    ShouldShowPage = true;
+                    return;
+                }
                 WeatherDisplayInformation =
                     new ObservableCollection<DailyWeatherItem>(weatherInfo);
                 IsRefreshActive = false;

@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using Arex388.Geocodio;
 using DarkSkyApi;
 using DarkSkyApi.Models;
-using Geocoding;
-using Geocoding.MapQuest;
 using MotorcycleRidingWeather.Constants;
 using MotorcycleRidingWeather.Models;
 using Plugin.Settings;
@@ -18,14 +16,12 @@ namespace MotorcycleRidingWeather.Services
 {
     public class SessionData : BindableBase, ISessionData
     {
-        internal IGeocoder geocoder;
         internal DarkSkyService darkSkyService;
         private static ISettings SavedUserSettings => CrossSettings.Current;
 
 
         public SessionData()
         {
-            geocoder = new MapQuestGeocoder(Keys.MapQuestKey);
             darkSkyService = new DarkSkyService(Keys.DarkSkyKey);
             CurrentUserPreferences = new UserPreferences();
             LoadCurrentUserPreferences();
@@ -55,11 +51,18 @@ namespace MotorcycleRidingWeather.Services
                 Keys.GEOCODIO_API_KEY);
                 geocode = await geocodio.GetGeocodeAsync(zipCode);
             }
-            var latitude = (double)geocode.Results[0].Location.Latitude;
-            var longitude =(double)geocode.Results[0].Location.Longitude;
-            Forecast allForecastData = await darkSkyService.GetWeatherDataAsync(latitude, longitude);
-            SessionDailyWeatherData = GrabDailyData(allForecastData);
-            return SessionDailyWeatherData;
+            if (geocode.Success)
+            {
+                var latitude = (double)geocode.Results[0].Location.Latitude;
+                var longitude =(double)geocode.Results[0].Location.Longitude;
+                Forecast allForecastData = await darkSkyService.GetWeatherDataAsync(latitude, longitude);
+                SessionDailyWeatherData = GrabDailyData(allForecastData);
+                return SessionDailyWeatherData;
+            }
+            else
+            {
+                return new ObservableCollection<DailyWeatherItem>();
+            }
         }
 
 
