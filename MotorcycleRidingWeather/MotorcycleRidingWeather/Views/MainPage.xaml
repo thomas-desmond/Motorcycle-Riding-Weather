@@ -52,7 +52,7 @@
                 <Button
                     Grid.Column="2"
                     Grid.Row="0"
-                    Text="Settings"
+                    Image="settings.png"
                     FontAttributes="Bold"
                     Margin="0,0,5,0"
                     HorizontalOptions="EndAndExpand"
@@ -253,23 +253,20 @@
                                             <RowDefinition
                                                 Height="Auto" />
                                             <RowDefinition
-                                                Height="2" />
+                                                Height="Auto" />
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition
-                                                Width="Auto" />
-                                            <ColumnDefinition
-                                                Width="4*" />
-                                            <ColumnDefinition
-                                                Width="3*" />
-                                            <ColumnDefinition
-                                                Width="Auto" />
+                                                Width="*" />
+                                            
                                         </Grid.ColumnDefinitions>
                                         <StackLayout
                                             Grid.Column="0"
                                             Grid.Row="0"
-                                            Grid.RowSpan="3"
-                                            Padding="0,0,5,0"
+                                            Grid.ColumnSpan="4"
+                                            Padding="0,10"                                           
+                                            Orientation="Horizontal"
+                                            HorizontalOptions="Center"
                                             VerticalOptions="Center">
                                             <Image
                                                 Source="bike.png"
@@ -277,26 +274,31 @@
                                             <Image
                                                 Source="car.png"
                                                 IsVisible="{Binding IsBadRidingDay}" />
-                                        </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="0"
-                                            Grid.Column="1"
-                                            Orientation="Horizontal"
-                                            VerticalOptions="Center"
-                                            Padding="6,0,10,0">
                                             <Label
                                                 x:Name="DateLabel"
                                                 TextColor="White"
+                                                VerticalTextAlignment="Center"
                                                 FontAttributes="Bold"
                                                 Text="{Binding StructuredTime, StringFormat='{0:F3}'}"
                                                 FontSize="20" />
-                                        </StackLayout>
+                                            <Label
+                                                x:Name="Temperature"
+                                                VerticalOptions="Center"
+                                                TextColor="White"
+                                                FontAttributes="Bold"
+                                                VerticalTextAlignment="Center"
+                                                HorizontalOptions="End"
+                                                Text="{Binding HighLowFormattedText}"
+                                                FontSize="22" />
+                                        </StackLayout>     
                                         <StackLayout
-                                            Grid.Row="0"
-                                            Grid.Column="2"
-                                            Orientation="Vertical"
-                                            Padding="0,0,10,3"
-                                            Grid.ColumnSpan="2">
+                                            Grid.Row="1"
+                                            Grid.Column="0"                                          
+                                            Grid.ColumnSpan="4"
+                                            Orientation="Horizontal"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            Padding="0,0,10,3">
                                             <StackLayout
                                                 Orientation="Horizontal">
                                                 <Image
@@ -333,23 +335,6 @@
                                                     Text="{Binding Path=RainAccummulationCalculatedByDaily, StringFormat='{0:F2} in'}"
                                                     FontSize="Medium" />
                                             </StackLayout>
-                                        </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="0"
-                                            Grid.Column="3"
-                                            Padding="0,0,5,0"
-                                            Orientation="Vertical"
-                                            HorizontalOptions="EndAndExpand"
-                                            VerticalOptions="Center">
-                                            <Label
-                                                x:Name="Temperature"
-                                                VerticalOptions="Center"
-                                                TextColor="White"
-                                                FontAttributes="Bold"
-                                                VerticalTextAlignment="Center"
-                                                HorizontalOptions="End"
-                                                Text="{Binding HighLowFormattedText}"
-                                                FontSize="22" />
                                         </StackLayout>
                                     </Grid>
                                 </Frame>
