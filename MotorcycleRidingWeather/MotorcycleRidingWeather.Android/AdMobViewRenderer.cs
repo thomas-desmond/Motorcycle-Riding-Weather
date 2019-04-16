@@ -36,7 +36,7 @@ namespace MotorcycleRidingWeather.Droid
         {
             var adView = new AdView(Context)
             {
-                AdSize = AdSize.SmartBanner,
+                AdSize = AdSize.Banner,
                 AdUnitId = Element.AdUnitId
             };
 
