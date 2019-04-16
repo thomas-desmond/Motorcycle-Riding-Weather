@@ -156,6 +156,7 @@
     <AndroidResource Include="Resources\drawable\umbrella16.png" />
     <AndroidResource Include="Resources\drawable\wind16.png" />
     <AndroidResource Include="Resources\drawable\drop16.png" />
+    <AndroidResource Include="Resources\drawable\settings.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

@@ -158,6 +158,7 @@
     <BundleResource Include="iTunesArtwork%403x.png" />
     <BundleResource Include="Resources\gradient.png" />
     <BundleResource Include="Resources\motoIcon.png" />
+    <BundleResource Include="Resources\settings.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
