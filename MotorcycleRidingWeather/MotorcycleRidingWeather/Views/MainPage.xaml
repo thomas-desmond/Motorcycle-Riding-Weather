@@ -183,7 +183,7 @@
                         FontSize="22"
                         VerticalOptions="Center"
                         FontAttributes="Bold"
-                        Text="Today is a good day to ride!" />
+                        Text="It's a riding day!" />
                 </StackLayout>
                 <StackLayout
                     Grid.Column="0"
@@ -201,7 +201,7 @@
                         FontSize="22"
                         VerticalOptions="Center"
                         FontAttributes="Bold"
-                        Text="Looks like a car driving day :(" />
+                        Text="Car driving day :(" />
                 </StackLayout>
                 <Button
                     Grid.Row="0"

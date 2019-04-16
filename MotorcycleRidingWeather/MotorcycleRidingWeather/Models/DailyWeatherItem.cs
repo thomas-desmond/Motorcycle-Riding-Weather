@@ -208,7 +208,7 @@ namespace MotorcycleRidingWeather.Models
         {
             get
             {
-                return $"{Time.DayOfWeek} Weather";
+                return $"{Time.DayOfWeek}";
             }
         }
 
