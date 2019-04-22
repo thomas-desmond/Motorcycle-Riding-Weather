@@ -28,6 +28,7 @@ namespace MotorcycleRidingWeather.iOS
 
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App(new iOSInitializer()));
+            Firebase.Core.App.Configure();
 
             return base.FinishedLaunching(app, options);
         }
