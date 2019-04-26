@@ -32,5 +32,7 @@
 	<string>1:102369636887:ios:3569f80b9eaea9fe</string>
 	<key>DATABASE_URL</key>
 	<string>https://weather-ride.firebaseio.com</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-6670943348936598~8658832182</string>
 </dict>
 </plist>
