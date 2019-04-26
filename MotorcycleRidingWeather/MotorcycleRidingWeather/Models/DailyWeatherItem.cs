@@ -241,6 +241,22 @@ namespace MotorcycleRidingWeather.Models
             }
         }
 
+        public string SunsetTimeOnly
+        {
+            get
+            {
+                return SunsetTime.LocalDateTime.ToString("h:mm tt");
+            }
+        }
+
+        public string SunriseTimeOnly
+        {
+            get
+            {
+                return SunriseTime.LocalDateTime.ToString("h:mm tt");
+            }
+        }
+
         /// <summary>
         /// Gets or sets the time of the last sunrise before the solar noon closest to local noon
         /// on the given day.

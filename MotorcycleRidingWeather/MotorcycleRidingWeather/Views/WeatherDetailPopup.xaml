@@ -52,6 +52,8 @@
                             Height="Auto" />
                         <RowDefinition
                             Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition
@@ -127,14 +129,32 @@
                             FontSize="Small"
                             Text="Total Rain" />
                     </StackLayout>
-                    <Image
+                    <StackLayout
                         Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        HorizontalOptions="Center"
+                        Spacing="10"
+                        Orientation="Horizontal">
+                        <Label
+                            FontSize="Medium"
+                            TextColor="Black"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding SunriseTimeOnly, StringFormat='Sunrise: {0}'}" />
+                        <Label
+                            FontSize="Medium"
+                            TextColor="Black"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding SunsetTimeOnly, StringFormat='Sunset: {0}'}" />
+                    </StackLayout>
+                    <Image
+                        Grid.Row="3"
                         Grid.Column="0"
                         Grid.ColumnSpan="3"
                         HorizontalOptions="Center"
                         Source="{Binding WeatherIcon}" />
                     <Label
-                        Grid.Row="3"
+                        Grid.Row="4"
                         Grid.Column="0"
                         Grid.ColumnSpan="3"
                         VerticalOptions="Center"
@@ -145,7 +165,7 @@
                     <StackLayout
                         Grid.Column="0"
                         Grid.ColumnSpan="3"
-                        Grid.Row="4"
+                        Grid.Row="5"
                         IsVisible="{Binding IsGoodRidingDay}"
                         Orientation="Horizontal"
                         HorizontalOptions="Center"
@@ -163,7 +183,7 @@
                     <StackLayout
                         Grid.Column="0"
                         Grid.ColumnSpan="3"
-                        Grid.Row="4"
+                        Grid.Row="5"
                         IsVisible="{Binding IsBadRidingDay}"
                         Orientation="Horizontal"
                         HorizontalOptions="Center"

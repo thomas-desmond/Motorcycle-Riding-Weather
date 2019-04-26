@@ -105,6 +105,8 @@ namespace MotorcycleRidingWeather.Services
                     Icon = day.Icon,
                     Summary = day.Summary,
                     RainAccummulationCalculatedByDaily = day.PrecipitationIntensity * 24,
+                    SunsetTime = day.SunsetTime,
+                    SunriseTime = day.SunriseTime,
                 };
 
 
