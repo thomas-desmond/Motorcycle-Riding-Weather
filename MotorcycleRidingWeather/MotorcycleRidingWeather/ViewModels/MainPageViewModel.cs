@@ -139,6 +139,8 @@ namespace MotorcycleRidingWeather.ViewModels
                                                           "It looks like this if your first time using the app or you do not have a location set, let's do that now",
                                                            "OK");
                 await _navigationService.NavigateAsync(PageNames.SettingsPageName);
+                                 
+                //await _navigationService.NavigateAsync(PageNames.NewUserPage1Name);
             }
         }
     }

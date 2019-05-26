@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"    
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+    x:Class="MotorcycleRidingWeather.Views.NewUserPage2">
+    <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient
+            Rotation="90">
+            <xfg:GradientStep
+                StepColor="#66ccff"
+                StepPercentage="0" />
+            <xfg:GradientStep
+                StepColor="#6699ff"
+                StepPercentage="1" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
+    <StackLayout
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <Label
+            Text="Weather Ride" />
+        <Label
+            Text="What are your idea riding temperatures" />
+
+        <Button Text="Next"/>
+        <Button Text="Back"/>
+
+    </StackLayout>
+</ContentPage>

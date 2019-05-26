@@ -105,7 +105,7 @@
                                 FontSize="Medium"
                                 TextColor="Black"
                                 HorizontalTextAlignment="Center"
-                                Text="{Binding WindSpeed, StringFormat='{0:0} m/s'}" />
+                                Text="{Binding WindSpeed, StringFormat='{0:0} mph'}" />
                         </StackLayout>
                         <Label
                             FontSize="Small"
