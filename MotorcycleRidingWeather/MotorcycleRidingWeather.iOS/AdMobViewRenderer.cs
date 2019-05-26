@@ -3,6 +3,7 @@ using MotorcycleRidingWeather;
 using MotorcycleRidingWeather.iOS;
 using System.ComponentModel;
 using UIKit;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
@@ -13,6 +14,11 @@ namespace MotorcycleRidingWeather.iOS
     {
         protected override void OnElementChanged(ElementChangedEventArgs<AdMobView> e)
         {
+            var internet = Connectivity.NetworkAccess;
+            if (internet != NetworkAccess.Internet)
+            {
+                return;
+            }
             base.OnElementChanged(e);
             if (Control == null)
             {

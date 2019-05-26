@@ -4,6 +4,7 @@ using Android.Gms.Ads;
 using Android.Widget;
 using MotorcycleRidingWeather;
 using MotorcycleRidingWeather.Droid;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
@@ -17,6 +18,11 @@ namespace MotorcycleRidingWeather.Droid
         protected override void OnElementChanged(ElementChangedEventArgs<AdMobView> e)
         {
             base.OnElementChanged(e);
+            var internet = Connectivity.NetworkAccess;
+            if (internet != NetworkAccess.Internet)
+            {
+                return;
+            }
 
             if (e.NewElement != null && Control == null)
             {
@@ -34,6 +40,12 @@ namespace MotorcycleRidingWeather.Droid
 
         private AdView CreateAdView()
         {
+            var internet = Connectivity.NetworkAccess;
+            if (internet != NetworkAccess.Internet)
+            {
+                return null;
+            }
+
             var adView = new AdView(Context)
             {
                 AdSize = AdSize.Banner,

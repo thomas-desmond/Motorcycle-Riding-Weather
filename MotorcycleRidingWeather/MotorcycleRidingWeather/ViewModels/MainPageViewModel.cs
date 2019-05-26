@@ -10,6 +10,7 @@ using Prism.Services;
 using System;
 using MotorcycleRidingWeather.Views;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Essentials;
 
 namespace MotorcycleRidingWeather.ViewModels
 {
@@ -79,6 +80,7 @@ namespace MotorcycleRidingWeather.ViewModels
                                 IPageDialogService pageDialogService)
             : base(navigationService)
         {
+
             NavigateToSettingsPage = new DelegateCommand(OnNavigateToSettingsPage);
             OpenWeatherDetailPopup = new DelegateCommand(OnOpenWeatherDetailPopup);
 
@@ -101,6 +103,12 @@ namespace MotorcycleRidingWeather.ViewModels
 
         public override async void OnNavigatingTo(NavigationParameters parameters)
         {
+            var internet = Connectivity.NetworkAccess;
+            if (internet != NetworkAccess.Internet)
+            {
+                IsRefreshActive = false;
+                return;
+            }
             var zipCode = SessionData.CurrentUserPreferences.LocationZipCode;
             if (string.IsNullOrWhiteSpace(zipCode))
             {
@@ -133,6 +141,13 @@ namespace MotorcycleRidingWeather.ViewModels
         public override async void OnAppearing()
         {
             base.OnAppearing();
+            var internet = Connectivity.NetworkAccess;
+            if (internet != NetworkAccess.Internet)
+            {
+                await _pageDialogService.DisplayAlertAsync("No Internet", "Weather Ride could not find an internet connection. The will not work as desired without a valid internet connection.", "Close");
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(SessionData.CurrentUserPreferences.LocationZipCode))
             {
                 await _pageDialogService.DisplayAlertAsync("Set A Location",
