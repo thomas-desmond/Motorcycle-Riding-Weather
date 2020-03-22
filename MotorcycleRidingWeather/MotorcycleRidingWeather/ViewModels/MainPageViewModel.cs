@@ -101,7 +101,7 @@ namespace MotorcycleRidingWeather.ViewModels
             await _navigationService.NavigateAsync(PageNames.SettingsPageName);
         }
 
-        public override async void OnNavigatingTo(NavigationParameters parameters)
+        public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             var internet = Connectivity.NetworkAccess;
             if (internet != NetworkAccess.Internet)

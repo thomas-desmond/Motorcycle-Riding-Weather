@@ -107,11 +107,6 @@ namespace MotorcycleRidingWeather.ViewModels
             InitalizePageWithUserSettings();
         }
 
-        //public override void OnNavigatingTo(NavigationParameters parameters)
-        //{
-        //    InitalizePageWithUserSettings();
-        //}
-
         void InitalizePageWithUserSettings()
         {
             UserPreferences = _sessionData.GetCurrentUserPreferences();
