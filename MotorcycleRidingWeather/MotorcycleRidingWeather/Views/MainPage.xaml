@@ -325,8 +325,8 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <!--<local:AdMobView
-                    Grid.Row="1" />-->
+                <local:AdMobView
+                    Grid.Row="1" />
             </Grid>
             <StackLayout.Triggers>
                 <DataTrigger
