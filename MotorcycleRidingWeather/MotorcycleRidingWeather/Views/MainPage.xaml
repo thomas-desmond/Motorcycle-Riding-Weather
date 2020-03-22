@@ -8,7 +8,7 @@
     ios:Page.UseSafeArea="true"
     xmlns:controls="clr-namespace:MotorcycleRidingWeather.Controls;assembly=MotorcycleRidingWeather"
     x:Class="MotorcycleRidingWeather.Views.MainPage">
-    <xfg:ContentPageGloss.BackgroundGradient>
+    <!--<xfg:ContentPageGloss.BackgroundGradient>
         <xfg:Gradient
             Rotation="90">
             <xfg:GradientStep
@@ -18,7 +18,7 @@
                 StepColor="#6699ff"
                 StepPercentage="1" />
         </xfg:Gradient>
-    </xfg:ContentPageGloss.BackgroundGradient>
+    </xfg:ContentPageGloss.BackgroundGradient>-->
     <StackLayout>
         <ActivityIndicator
             IsVisible="{Binding ShowActivityIndicator}"
@@ -222,7 +222,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <xfg:CellGloss.BackgroundGradient>
+                                <!--<xfg:CellGloss.BackgroundGradient>
                                     <xfg:Gradient
                                         Rotation="90"
                                         x:Name="rotatingGradient">
@@ -233,7 +233,7 @@
                                             StepColor="#6699ff"
                                             StepPercentage="1" />
                                     </xfg:Gradient>
-                                </xfg:CellGloss.BackgroundGradient>
+                                </xfg:CellGloss.BackgroundGradient>-->
                                 <Frame
                                     Padding="5"
                                     Margin="5,4"
