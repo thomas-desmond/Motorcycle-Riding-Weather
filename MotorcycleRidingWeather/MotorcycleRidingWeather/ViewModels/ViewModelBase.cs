@@ -51,5 +51,13 @@ namespace MotorcycleRidingWeather.ViewModels
         public virtual void OnDisappearing()
         {
         }
+
+        public void OnNavigatedFrom(INavigationParameters parameters)
+        {
+        }
+
+        public void OnNavigatedTo(INavigationParameters parameters)
+        {
+        }
     }
 }
