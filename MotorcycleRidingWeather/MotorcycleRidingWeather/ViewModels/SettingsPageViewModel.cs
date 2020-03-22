@@ -101,10 +101,16 @@ namespace MotorcycleRidingWeather.ViewModels
             _navigationService.GoBackAsync();
         }
 
-        public override void OnNavigatingTo(NavigationParameters parameters)
+
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             InitalizePageWithUserSettings();
         }
+
+        //public override void OnNavigatingTo(NavigationParameters parameters)
+        //{
+        //    InitalizePageWithUserSettings();
+        //}
 
         void InitalizePageWithUserSettings()
         {
