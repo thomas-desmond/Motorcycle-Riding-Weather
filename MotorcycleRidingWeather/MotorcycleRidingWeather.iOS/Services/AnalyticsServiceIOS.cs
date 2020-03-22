@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Firebase.Analytics;
 using Foundation;
 using MotorcycleRidingWeather.iOS.Services;
 using MotorcycleRidingWeather.Services;
@@ -31,7 +30,7 @@ namespace MotorcycleRidingWeather.iOS.Services
             {
                 var nullDict = new NSDictionary<NSString, NSObject>();
                 nullDict = null;
-                Analytics.LogEvent(eventId, nullDict);
+                //Analytics.LogEvent(eventId, nullDict);
                 return;
             }
 
@@ -45,7 +44,7 @@ namespace MotorcycleRidingWeather.iOS.Services
 
             var parametersDictionary =
                 NSDictionary<NSString, NSObject>.FromObjectsAndKeys(values.ToArray(), keys.ToArray(), keys.Count);
-            Analytics.LogEvent(eventId, parametersDictionary);
+            //Analytics.LogEvent(eventId, parametersDictionary);
 
         }
     }
